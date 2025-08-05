@@ -11,8 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('hero_images', function (Blueprint $table) {
-            if (Schema::hasColumn('hero_images', 'sort_order')) {
+        Schema::table('categories', function (Blueprint $table) {
+            if (Schema::hasColumn('categories', 'icon')) {
+                $table->dropColumn('icon');
+            }
+            if (Schema::hasColumn('categories', 'sort_order')) {
                 $table->dropColumn('sort_order');
             }
         });
@@ -23,8 +26,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('hero_images', function (Blueprint $table) {
-            $table->integer('sort_order')->nullable()->after('alt_text');
+        Schema::table('categories', function (Blueprint $table) {
+            $table->string('icon')->nullable()->after('description');
         });
     }
 };
