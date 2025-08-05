@@ -1,0 +1,56 @@
+<?php
+
+use App\Http\Controllers\ProfileController;
+use Illuminate\Foundation\Application;
+use Illuminate\Support\Facades\Route;
+use Inertia\Inertia;
+
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/collections', [App\Http\Controllers\CollectionController::class, 'index'])->name('collections.index');
+Route::get('/collections/{collection}', [App\Http\Controllers\CollectionController::class, 'show'])->name('collections.show');
+
+// Contact and About pages
+Route::get('/contact', [App\Http\Controllers\ContactController::class, 'index'])->name('contact');
+
+Route::get('/about', [App\Http\Controllers\AboutController::class, 'index'])->name('about');
+
+Route::get('/news', [App\Http\Controllers\NewsController::class, 'index'])->name('news.index');
+Route::get('/news/{news}', [App\Http\Controllers\NewsController::class, 'show'])->name('news.show');
+
+Route::get('/events', [App\Http\Controllers\EventController::class, 'index'])->name('events.index');
+Route::get('/events/{event}', [App\Http\Controllers\EventController::class, 'show'])->name('events.show');
+
+// Testimonials routes
+Route::get('/testimonials', [App\Http\Controllers\TestimonialController::class, 'index'])->name('testimonials.index');
+Route::post('/testimonials', [App\Http\Controllers\TestimonialController::class, 'store'])->name('testimonials.store');
+
+// Team Members routes
+Route::resource('team-members', App\Http\Controllers\TeamMemberController::class);
+Route::post('/team-members/{teamMember}/upload-photo', [App\Http\Controllers\TeamMemberController::class, 'uploadPhoto'])->name('team-members.upload-photo');
+
+// Add import at the top
+use App\Http\Controllers\CollectionController;
+use App\Http\Controllers\NewsController;
+use App\Http\Controllers\EventController;
+use App\Http\Controllers\TestimonialController;
+use App\Http\Controllers\TeamMemberController;
+
+Route::get('/dashboard', function () {
+    return Inertia::render('Dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+// Pengelola routes
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/pengelola/dashboard', function () {
+        return Inertia::render('Pengelola/Dashboard');
+    })->name('pengelola.dashboard');
+});
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+require __DIR__.'/auth.php';

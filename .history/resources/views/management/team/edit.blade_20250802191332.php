@@ -1,0 +1,328 @@
+@extends('layouts.dashboard.dashboard')
+
+@section('title', 'Edit Anggota Tim - BDARU Museum')
+
+@section('content')
+<!--begin::Content-->
+<div id="kt_app_content" class="app-content flex-column-fluid">
+    <!--begin::Content container-->
+    <div id="kt_app_content_container" class="app-container container-fluid">
+        <!--begin::Card-->
+        <div class="card">
+            <!--begin::Card header-->
+            <div class="card-header border-0 pt-6">
+                <!--begin::Card title-->
+                <div class="card-title">
+                    <h2 class="fw-bold">Edit Anggota Tim: {{ $teamMember->name }}</h2>
+                </div>
+                <!--end::Card title-->
+                <!--begin::Card toolbar-->
+                <div class="card-toolbar">
+                    <!--begin::Toolbar-->
+                    <div class="d-flex justify-content-end" data-kt-user-table-toolbar="base">
+                        <!--begin::Back button-->
+                        <a href="{{ route('team-management.index') }}" class="btn btn-secondary me-2">
+                            <i class="fas fa-arrow-left me-2"></i>
+                            Kembali
+                        </a>
+                        <!--end::Back button-->
+                    </div>
+                    <!--end::Toolbar-->
+                </div>
+                <!--end::Card toolbar-->
+            </div>
+            <!--end::Card header-->
+
+            <!--begin::Card body-->
+            <div class="card-body py-4">
+                <form action="{{ route('team-management.update', $teamMember->id) }}" method="POST" enctype="multipart/form-data" id="teamForm">
+                    @csrf
+                    @method('PUT')
+
+                    <div class="row">
+                        <!--begin::Main Content-->
+                        <div class="col-lg-8">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3 class="card-title">Informasi Anggota Tim</h3>
+                                </div>
+                                <div class="card-body">
+                                    <div class="mb-4">
+                                        <label for="name" class="form-label fw-bold">Nama Lengkap <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control @error('name') is-invalid @enderror"
+                                               id="name" name="name" value="{{ old('name', $teamMember->name) }}"
+                                               placeholder="Masukkan nama lengkap" required>
+                                        @error('name')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
+                                        <div class="form-text">Nama lengkap anggota tim</div>
+                                    </div>
+
+                                    <div class="mb-4">
+                                        <label for="position" class="form-label fw-bold">Jabatan <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control @error('position') is-invalid @enderror"
+                                               id="position" name="position" value="{{ old('position', $teamMember->position) }}"
+                                               placeholder="Masukkan jabatan" required>
+                                        @error('position')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
+                                        <div class="form-text">Jabatan atau posisi dalam tim</div>
+                                    </div>
+
+                                    <div class="mb-4">
+                                        <label for="description" class="form-label fw-bold">Deskripsi</label>
+                                        <textarea class="form-control @error('description') is-invalid @enderror"
+                                                  id="description" name="description" rows="4"
+                                                  placeholder="Masukkan deskripsi atau bio">{{ old('description', $teamMember->description) }}</textarea>
+                                        @error('description')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
+                                        <div class="form-text">Deskripsi singkat tentang anggota tim</div>
+                                    </div>
+
+                                    <div class="mb-4">
+                                        <label for="email" class="form-label fw-bold">Email</label>
+                                        <input type="email" class="form-control @error('email') is-invalid @enderror"
+                                               id="email" name="email" value="{{ old('email', $teamMember->email) }}"
+                                               placeholder="Masukkan email">
+                                        @error('email')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
+                                        <div class="form-text">Alamat email untuk kontak</div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="mb-4">
+                                                <label for="linkedin" class="form-label fw-bold">LinkedIn</label>
+                                                <input type="url" class="form-control @error('linkedin') is-invalid @enderror"
+                                                       id="linkedin" name="linkedin" value="{{ old('linkedin', $teamMember->linkedin) }}"
+                                                       placeholder="https://linkedin.com/in/username">
+                                                @error('linkedin')
+                                                    <div class="invalid-feedback">{{ $message }}</div>
+                                                @enderror
+                                                <div class="form-text">Profil LinkedIn (opsional)</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="mb-4">
+                                                <label for="twitter" class="form-label fw-bold">Twitter</label>
+                                                <input type="url" class="form-control @error('twitter') is-invalid @enderror"
+                                                       id="twitter" name="twitter" value="{{ old('twitter', $teamMember->twitter) }}"
+                                                       placeholder="https://twitter.com/username">
+                                                @error('twitter')
+                                                    <div class="invalid-feedback">{{ $message }}</div>
+                                                @enderror
+                                                <div class="form-text">Profil Twitter (opsional)</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-4">
+                                        <label for="photo" class="form-label fw-bold">Foto</label>
+                                        <input type="file" class="form-control @error('photo') is-invalid @enderror"
+                                               id="photo" name="photo" accept="image/*">
+                                        @error('photo')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
+                                        <div class="form-text">Upload foto anggota tim (opsional)</div>
+
+                                        @if($teamMember->photo)
+                                            <div class="mt-3">
+                                                <label class="form-label fw-bold">Foto Saat Ini</label>
+                                                <div class="d-flex align-items-center">
+                                                    <img src="{{ asset('storage/' . $teamMember->photo) }}"
+                                                         alt="Current Photo" class="img-thumbnail me-3"
+                                                         style="max-width: 150px; max-height: 150px;">
+                                                    <div>
+                                                        <small class="text-muted d-block">Foto saat ini akan tetap digunakan jika tidak ada upload baru</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--end::Main Content-->
+
+                        <!--begin::Sidebar-->
+                        <div class="col-lg-4">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3 class="card-title">Pengaturan</h3>
+                                </div>
+                                <div class="card-body">
+                                    <div class="mb-4">
+                                        <label for="sort_order" class="form-label fw-bold">Urutan Tampilan</label>
+                                        <input type="number" class="form-control @error('sort_order') is-invalid @enderror"
+                                               id="sort_order" name="sort_order" value="{{ old('sort_order', $teamMember->sort_order) }}"
+                                               placeholder="Masukkan urutan" min="0">
+                                        @error('sort_order')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
+                                        <div class="form-text">Urutan tampilan di halaman tim (0 = pertama)</div>
+                                    </div>
+
+                                    <div class="mb-4">
+                                        <label class="form-label fw-bold">Status</label>
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input" type="checkbox" id="is_active" name="is_active"
+                                                   value="1" {{ old('is_active', !$teamMember->deleted_at) ? 'checked' : '' }}>
+                                            <label class="form-check-label" for="is_active">
+                                                Anggota Tim Aktif
+                                            </label>
+                                        </div>
+                                        <div class="form-text">Anggota tim aktif akan ditampilkan di frontend</div>
+                                    </div>
+
+                                    <div class="alert alert-info">
+                                        <div class="d-flex align-items-center">
+                                            <i class="fas fa-info-circle me-2"></i>
+                                            <div>
+                                                <strong>Info:</strong> Anggota tim dibuat pada
+                                                <strong>{{ $teamMember->created_at->format('d M Y H:i') }}</strong>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="alert alert-warning">
+                                        <div class="d-flex align-items-center">
+                                            <i class="fas fa-exclamation-triangle me-2"></i>
+                                            <div>
+                                                <strong>Perhatian:</strong> Mengubah anggota tim dapat mempengaruhi tampilan di frontend
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--end::Sidebar-->
+                    </div>
+
+                    <!--begin::Form Actions-->
+                    <div class="d-flex justify-content-end mt-6">
+                        <button type="button" class="btn btn-secondary me-2" onclick="resetForm()">
+                            <i class="fas fa-undo me-2"></i>
+                            Reset
+                        </button>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-save me-2"></i>
+                            Update Anggota Tim
+                        </button>
+                    </div>
+                    <!--end::Form Actions-->
+                </form>
+            </div>
+            <!--end::Card body-->
+        </div>
+        <!--end::Card-->
+    </div>
+    <!--end::Content container-->
+</div>
+<!--end::Content-->
+
+<script>
+// Form validation and submission
+document.getElementById('teamForm').addEventListener('submit', function(e) {
+    const name = document.getElementById('name').value.trim();
+    const position = document.getElementById('position').value.trim();
+
+    if (!name) {
+        e.preventDefault();
+        Swal.fire({
+            title: 'Error!',
+            text: 'Nama anggota tim wajib diisi',
+            icon: 'error',
+            confirmButtonText: 'OK'
+        });
+        return false;
+    }
+
+    if (!position) {
+        e.preventDefault();
+        Swal.fire({
+            title: 'Error!',
+            text: 'Jabatan anggota tim wajib diisi',
+            icon: 'error',
+            confirmButtonText: 'OK'
+        });
+        return false;
+    }
+
+    // Show confirmation
+    e.preventDefault();
+    Swal.fire({
+        title: 'Konfirmasi Update',
+        text: 'Apakah Anda yakin ingin mengupdate anggota tim ini?',
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Ya, Update!',
+        cancelButtonText: 'Batal'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            // Show loading
+            Swal.fire({
+                title: 'Mengupdate...',
+                text: 'Mohon tunggu, anggota tim sedang diupdate',
+                allowOutsideClick: false,
+                didOpen: () => {
+                    Swal.showLoading();
+                }
+            });
+
+            // Submit form
+            document.getElementById('teamForm').submit();
+        }
+    });
+});
+
+function resetForm() {
+    Swal.fire({
+        title: 'Konfirmasi Reset',
+        text: 'Apakah Anda yakin ingin mereset form ke data asli?',
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonColor: '#6c757d',
+        cancelButtonColor: '#3085d6',
+        confirmButtonText: 'Ya, Reset!',
+        cancelButtonText: 'Batal'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            // Reset to original values
+            document.getElementById('name').value = '{{ $teamMember->name }}';
+            document.getElementById('position').value = '{{ $teamMember->position }}';
+            document.getElementById('description').value = '{{ $teamMember->description }}';
+            document.getElementById('email').value = '{{ $teamMember->email }}';
+            document.getElementById('linkedin').value = '{{ $teamMember->linkedin }}';
+            document.getElementById('twitter').value = '{{ $teamMember->twitter }}';
+            document.getElementById('sort_order').value = '{{ $teamMember->sort_order }}';
+            document.getElementById('is_active').checked = {{ !$teamMember->deleted_at ? 'true' : 'false' }};
+        }
+    });
+}
+
+// Show validation errors
+document.addEventListener('DOMContentLoaded', function() {
+    @if($errors->any())
+        Swal.fire({
+            title: 'Error!',
+            html: `
+                <div class="text-start">
+                    <p>Terjadi kesalahan pada form:</p>
+                    <ul>
+                        @foreach($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            `,
+            icon: 'error',
+            confirmButtonText: 'OK'
+        });
+    @endif
+});
+</script>
+@endsection

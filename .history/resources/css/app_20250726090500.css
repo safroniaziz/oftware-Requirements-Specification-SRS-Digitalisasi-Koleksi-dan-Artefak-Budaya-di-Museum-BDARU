@@ -1,0 +1,1310 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom animations for collections page */
+@keyframes float-slow {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+}
+
+@keyframes float-medium {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+}
+
+@keyframes float-fast {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes spin-slow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes spin-medium {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes fade-in-up {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes gradient {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+.animate-float-slow {
+    animation: float-slow 6s ease-in-out infinite;
+}
+
+.animate-float-medium {
+    animation: float-medium 4s ease-in-out infinite;
+}
+
+.animate-float-fast {
+    animation: float-fast 3s ease-in-out infinite;
+}
+
+.animate-float-subtle {
+    animation: float-slow 8s ease-in-out infinite;
+}
+
+.animate-spin-slow {
+    animation: spin-slow 20s linear infinite;
+}
+
+.animate-spin-medium {
+    animation: spin-medium 15s linear infinite;
+}
+
+.animate-fade-in-up {
+    animation: fade-in-up 0.6s ease-out;
+}
+
+.animate-gradient {
+    background-size: 200% 200%;
+    animation: gradient 3s ease infinite;
+}
+
+/* Line clamp utilities */
+.line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Hide scrollbar for category filter */
+.scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+
+/* Smooth transitions */
+* {
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #10b981;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #059669;
+}
+
+/* Loading skeleton animation */
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+.animate-pulse {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Hover effects */
+.hover-lift {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Glass morphism effect */
+.glass {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Gradient text */
+.gradient-text {
+    background: linear-gradient(135deg, #10b981, #059669, #047857);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Custom button styles */
+.btn-primary {
+    @apply inline-flex items-center px-6 py-3 bg-emerald-600 text-white font-semibold rounded-xl hover:bg-emerald-700 transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 shadow-lg hover:shadow-xl;
+}
+
+.btn-secondary {
+    @apply inline-flex items-center px-6 py-3 border-2 border-emerald-300 text-emerald-700 font-semibold rounded-xl hover:bg-emerald-50 hover:border-emerald-400 transition-all duration-300 transform hover:-translate-y-1 hover:scale-105;
+}
+
+/* Card styles */
+.card {
+    @apply bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 overflow-hidden border border-gray-100;
+}
+
+.card-image {
+    @apply relative h-64 overflow-hidden;
+}
+
+.card-content {
+    @apply p-6;
+}
+
+/* Badge styles */
+.badge {
+    @apply inline-flex items-center px-3 py-1 text-xs font-semibold rounded-full;
+}
+
+.badge-primary {
+    @apply bg-emerald-600 text-white;
+}
+
+.badge-secondary {
+    @apply bg-gray-100 text-gray-700;
+}
+
+/* Input styles */
+.input {
+    @apply w-full px-4 py-3 bg-white border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all duration-300;
+}
+
+/* Select styles */
+.select {
+    @apply appearance-none w-full px-4 py-3 bg-white border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all duration-300;
+}
+
+/* Responsive utilities */
+@media (max-width: 640px) {
+    .container-responsive {
+        @apply px-4;
+    }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+    .container-responsive {
+        @apply px-6;
+    }
+}
+
+@media (min-width: 1025px) {
+    .container-responsive {
+        @apply px-8;
+    }
+}
+
+/* Custom scrollbar styles */
+.scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+
+/* Line clamp utilities */
+.line-clamp-1 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+}
+
+.line-clamp-2 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+
+.line-clamp-3 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+}
+
+.line-clamp-4 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+}
+
+/* Responsive text utilities */
+@layer utilities {
+    .text-responsive-xs {
+        font-size: clamp(0.75rem, 2vw, 0.875rem);
+    }
+
+    .text-responsive-sm {
+        font-size: clamp(0.875rem, 2.5vw, 1rem);
+    }
+
+    .text-responsive-base {
+        font-size: clamp(1rem, 3vw, 1.125rem);
+    }
+
+    .text-responsive-lg {
+        font-size: clamp(1.125rem, 3.5vw, 1.25rem);
+    }
+
+    .text-responsive-xl {
+        font-size: clamp(1.25rem, 4vw, 1.5rem);
+    }
+
+    .text-responsive-2xl {
+        font-size: clamp(1.5rem, 5vw, 1.875rem);
+    }
+
+    .text-responsive-3xl {
+        font-size: clamp(1.875rem, 6vw, 2.25rem);
+    }
+
+    .text-responsive-4xl {
+        font-size: clamp(2.25rem, 7vw, 3rem);
+    }
+}
+
+/* Responsive spacing utilities */
+@layer utilities {
+    .space-responsive-xs {
+        gap: clamp(0.25rem, 1vw, 0.5rem);
+    }
+
+    .space-responsive-sm {
+        gap: clamp(0.5rem, 1.5vw, 0.75rem);
+    }
+
+    .space-responsive-md {
+        gap: clamp(0.75rem, 2vw, 1rem);
+    }
+
+    .space-responsive-lg {
+        gap: clamp(1rem, 2.5vw, 1.5rem);
+    }
+
+    .space-responsive-xl {
+        gap: clamp(1.5rem, 3vw, 2rem);
+    }
+}
+
+/* Responsive padding utilities */
+@layer utilities {
+    .p-responsive-xs {
+        padding: clamp(0.25rem, 1vw, 0.5rem);
+    }
+
+    .p-responsive-sm {
+        padding: clamp(0.5rem, 1.5vw, 0.75rem);
+    }
+
+    .p-responsive-md {
+        padding: clamp(0.75rem, 2vw, 1rem);
+    }
+
+    .p-responsive-lg {
+        padding: clamp(1rem, 2.5vw, 1.5rem);
+    }
+
+    .p-responsive-xl {
+        padding: clamp(1.5rem, 3vw, 2rem);
+    }
+}
+
+/* Responsive margin utilities */
+@layer utilities {
+    .m-responsive-xs {
+        margin: clamp(0.25rem, 1vw, 0.5rem);
+    }
+
+    .m-responsive-sm {
+        margin: clamp(0.5rem, 1.5vw, 0.75rem);
+    }
+
+    .m-responsive-md {
+        margin: clamp(0.75rem, 2vw, 1rem);
+    }
+
+    .m-responsive-lg {
+        margin: clamp(1rem, 2.5vw, 1.5rem);
+    }
+
+    .m-responsive-xl {
+        margin: clamp(1.5rem, 3vw, 2rem);
+    }
+}
+
+/* Mobile-first responsive grid */
+@layer utilities {
+    .grid-responsive-1 {
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+
+    .grid-responsive-2 {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+
+    .grid-responsive-3 {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+
+    .grid-responsive-4 {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+}
+
+/* Responsive container */
+@layer utilities {
+    .container-responsive {
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: clamp(1rem, 4vw, 2rem);
+        padding-right: clamp(1rem, 4vw, 2rem);
+    }
+
+    .container-responsive-sm {
+        max-width: clamp(640px, 90vw, 768px);
+    }
+
+    .container-responsive-md {
+        max-width: clamp(768px, 90vw, 1024px);
+    }
+
+    .container-responsive-lg {
+        max-width: clamp(1024px, 90vw, 1280px);
+    }
+
+    .container-responsive-xl {
+        max-width: clamp(1280px, 90vw, 1536px);
+    }
+}
+
+/* Responsive aspect ratios */
+@layer utilities {
+    .aspect-responsive-square {
+        aspect-ratio: 1 / 1;
+    }
+
+    .aspect-responsive-video {
+        aspect-ratio: 16 / 9;
+    }
+
+    .aspect-responsive-photo {
+        aspect-ratio: 4 / 3;
+    }
+
+    .aspect-responsive-wide {
+        aspect-ratio: 21 / 9;
+    }
+}
+
+/* Responsive navigation */
+@layer components {
+    .nav-responsive {
+        @apply flex items-center space-x-2 lg:space-x-4 overflow-x-auto scrollbar-hide;
+    }
+
+    .nav-item-responsive {
+        @apply px-3 lg:px-4 py-3 text-sm lg:text-base font-bold rounded-xl transition-all duration-300 whitespace-nowrap;
+    }
+
+    .nav-item-responsive:hover {
+        @apply transform scale-105;
+    }
+}
+
+/* Responsive cards */
+@layer components {
+    .card-responsive {
+        @apply bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 overflow-hidden border border-gray-100;
+    }
+
+    .card-responsive-mobile {
+        @apply p-4 lg:p-6;
+    }
+
+    .card-image-responsive {
+        @apply relative h-48 sm:h-56 lg:h-64 overflow-hidden;
+    }
+}
+
+/* Responsive buttons */
+@layer components {
+    .btn-responsive {
+        @apply px-3 lg:px-4 py-2 lg:py-3 text-sm lg:text-base font-semibold rounded-lg transition-all duration-300;
+    }
+
+    .btn-responsive-primary {
+        @apply btn-responsive bg-emerald-600 text-white hover:bg-emerald-700;
+    }
+
+    .btn-responsive-secondary {
+        @apply btn-responsive bg-gray-100 text-gray-700 hover:bg-gray-200;
+    }
+}
+
+/* Responsive forms */
+@layer components {
+    .form-input-responsive {
+        @apply w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all duration-300 text-sm lg:text-base;
+    }
+
+    .form-label-responsive {
+        @apply block text-sm font-medium text-gray-700 mb-2;
+    }
+}
+
+/* Responsive typography */
+@layer components {
+    .heading-responsive-1 {
+        @apply text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900;
+    }
+
+    .heading-responsive-2 {
+        @apply text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900;
+    }
+
+    .heading-responsive-3 {
+        @apply text-lg sm:text-xl lg:text-2xl font-bold text-gray-900;
+    }
+
+    .text-responsive-body {
+        @apply text-sm lg:text-base text-gray-600 leading-relaxed;
+    }
+
+    .text-responsive-caption {
+        @apply text-xs lg:text-sm text-gray-500;
+    }
+}
+
+/* Responsive spacing */
+@layer components {
+    .section-responsive {
+        @apply py-8 lg:py-16;
+    }
+
+    .section-responsive-sm {
+        @apply py-6 lg:py-12;
+    }
+
+    .section-responsive-lg {
+        @apply py-12 lg:py-24;
+    }
+}
+
+/* Responsive grid layouts */
+@layer components {
+    .grid-responsive-cols-1 {
+        @apply grid grid-cols-1;
+    }
+
+    .grid-responsive-cols-2 {
+        @apply grid grid-cols-1 sm:grid-cols-2;
+    }
+
+    .grid-responsive-cols-3 {
+        @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3;
+    }
+
+    .grid-responsive-cols-4 {
+        @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4;
+    }
+}
+
+/* Responsive gaps */
+@layer components {
+    .gap-responsive-sm {
+        @apply gap-4 lg:gap-6;
+    }
+
+    .gap-responsive-md {
+        @apply gap-6 lg:gap-8;
+    }
+
+    .gap-responsive-lg {
+        @apply gap-8 lg:gap-12;
+    }
+}
+
+/* Responsive flex layouts */
+@layer components {
+    .flex-responsive-col {
+        @apply flex flex-col lg:flex-row;
+    }
+
+    .flex-responsive-center {
+        @apply flex flex-col sm:flex-row items-center justify-center;
+    }
+
+    .flex-responsive-between {
+        @apply flex flex-col sm:flex-row items-center justify-between;
+    }
+}
+
+/* Responsive images */
+@layer components {
+    .img-responsive {
+        @apply w-full h-full object-cover;
+    }
+
+    .img-responsive-16-9 {
+        @apply w-full aspect-video object-cover;
+    }
+
+    .img-responsive-square {
+        @apply w-full aspect-square object-cover;
+    }
+}
+
+/* Responsive animations */
+@layer utilities {
+    .animate-responsive-fade-in {
+        animation: fadeIn 0.5s ease-in-out;
+    }
+
+    .animate-responsive-slide-up {
+        animation: slideUp 0.5s ease-out;
+    }
+
+    .animate-responsive-scale {
+        animation: scale 0.3s ease-in-out;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes scale {
+    from {
+        transform: scale(0.95);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+
+/* Responsive hover effects */
+@layer utilities {
+    .hover-responsive-lift {
+        @apply transition-transform duration-300 hover:-translate-y-1 hover:scale-105;
+    }
+
+    .hover-responsive-glow {
+        @apply transition-shadow duration-300 hover:shadow-lg hover:shadow-emerald-500/25;
+    }
+
+    .hover-responsive-color {
+        @apply transition-colors duration-300 hover:text-emerald-600;
+    }
+}
+
+/* Responsive focus states */
+@layer utilities {
+    .focus-responsive-ring {
+        @apply focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2;
+    }
+
+    .focus-responsive-border {
+        @apply focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500;
+    }
+}
+
+/* Responsive loading states */
+@layer utilities {
+    .loading-responsive {
+        @apply animate-pulse bg-gray-200 rounded;
+    }
+
+    .loading-responsive-text {
+        @apply animate-pulse bg-gray-200 h-4 rounded;
+    }
+
+    .loading-responsive-image {
+        @apply animate-pulse bg-gray-200 aspect-square rounded;
+    }
+}
+
+/* Responsive accessibility */
+@layer utilities {
+    .sr-responsive {
+        @apply sr-only sm:not-sr-only;
+    }
+
+    .focus-visible-responsive {
+        @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2;
+    }
+}
+
+/* Responsive print styles */
+@media print {
+    .print-responsive-hidden {
+        display: none !important;
+    }
+
+    .print-responsive-visible {
+        display: block !important;
+    }
+
+    .print-responsive-text {
+        color: black !important;
+        background: white !important;
+    }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .contrast-responsive {
+        border-width: 2px;
+    }
+
+    .contrast-responsive-text {
+        font-weight: bold;
+    }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    .motion-responsive {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+/* Dark mode support (if needed) */
+@media (prefers-color-scheme: dark) {
+    .dark-responsive {
+        @apply bg-gray-900 text-white;
+    }
+
+    .dark-responsive-card {
+        @apply bg-gray-800 border-gray-700;
+    }
+
+    .dark-responsive-text {
+        @apply text-gray-300;
+    }
+}
+
+/* Custom responsive breakpoints */
+@layer utilities {
+    .xs\:text-xs {
+        font-size: 0.75rem;
+    }
+
+    .xs\:text-sm {
+        font-size: 0.875rem;
+    }
+
+    .xs\:text-base {
+        font-size: 1rem;
+    }
+
+    .xs\:text-lg {
+        font-size: 1.125rem;
+    }
+
+    .xs\:text-xl {
+        font-size: 1.25rem;
+    }
+
+    .xs\:text-2xl {
+        font-size: 1.5rem;
+    }
+
+    .xs\:text-3xl {
+        font-size: 1.875rem;
+    }
+
+    .xs\:text-4xl {
+        font-size: 2.25rem;
+    }
+}
+
+/* Responsive spacing for extra small screens */
+@layer utilities {
+    .xs\:p-1 {
+        padding: 0.25rem;
+    }
+
+    .xs\:p-2 {
+        padding: 0.5rem;
+    }
+
+    .xs\:p-3 {
+        padding: 0.75rem;
+    }
+
+    .xs\:p-4 {
+        padding: 1rem;
+    }
+
+    .xs\:m-1 {
+        margin: 0.25rem;
+    }
+
+    .xs\:m-2 {
+        margin: 0.5rem;
+    }
+
+    .xs\:m-3 {
+        margin: 0.75rem;
+    }
+
+    .xs\:m-4 {
+        margin: 1rem;
+    }
+}
+
+/* Responsive grid for extra small screens */
+@layer utilities {
+    .xs\:grid-cols-1 {
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+
+    .xs\:grid-cols-2 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .xs\:grid-cols-3 {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+/* Responsive flex for extra small screens */
+@layer utilities {
+    .xs\:flex-row {
+        flex-direction: row;
+    }
+
+    .xs\:flex-col {
+        flex-direction: column;
+    }
+
+    .xs\:items-center {
+        align-items: center;
+    }
+
+    .xs\:justify-center {
+        justify-content: center;
+    }
+
+    .xs\:justify-between {
+        justify-content: space-between;
+    }
+}
+
+/* Responsive visibility for extra small screens */
+@layer utilities {
+    .xs\:hidden {
+        display: none;
+    }
+
+    .xs\:block {
+        display: block;
+    }
+
+    .xs\:flex {
+        display: flex;
+    }
+
+    .xs\:grid {
+        display: grid;
+    }
+}
+
+/* Responsive width and height for extra small screens */
+@layer utilities {
+    .xs\:w-full {
+        width: 100%;
+    }
+
+    .xs\:w-auto {
+        width: auto;
+    }
+
+    .xs\:h-full {
+        height: 100%;
+    }
+
+    .xs\:h-auto {
+        height: auto;
+    }
+}
+
+/* Responsive position for extra small screens */
+@layer utilities {
+    .xs\:relative {
+        position: relative;
+    }
+
+    .xs\:absolute {
+        position: absolute;
+    }
+
+    .xs\:fixed {
+        position: fixed;
+    }
+
+    .xs\:sticky {
+        position: sticky;
+    }
+}
+
+/* Responsive overflow for extra small screens */
+@layer utilities {
+    .xs\:overflow-hidden {
+        overflow: hidden;
+    }
+
+    .xs\:overflow-auto {
+        overflow: auto;
+    }
+
+    .xs\:overflow-scroll {
+        overflow: scroll;
+    }
+}
+
+/* Responsive border radius for extra small screens */
+@layer utilities {
+    .xs\:rounded-none {
+        border-radius: 0;
+    }
+
+    .xs\:rounded-sm {
+        border-radius: 0.125rem;
+    }
+
+    .xs\:rounded {
+        border-radius: 0.25rem;
+    }
+
+    .xs\:rounded-md {
+        border-radius: 0.375rem;
+    }
+
+    .xs\:rounded-lg {
+        border-radius: 0.5rem;
+    }
+
+    .xs\:rounded-xl {
+        border-radius: 0.75rem;
+    }
+
+    .xs\:rounded-2xl {
+        border-radius: 1rem;
+    }
+
+    .xs\:rounded-3xl {
+        border-radius: 1.5rem;
+    }
+
+    .xs\:rounded-full {
+        border-radius: 9999px;
+    }
+}
+
+/* Responsive shadows for extra small screens */
+@layer utilities {
+    .xs\:shadow-none {
+        box-shadow: none;
+    }
+
+    .xs\:shadow-sm {
+        box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    }
+
+    .xs\:shadow {
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    }
+
+    .xs\:shadow-md {
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+
+    .xs\:shadow-lg {
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    }
+
+    .xs\:shadow-xl {
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+
+    .xs\:shadow-2xl {
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    }
+}
+
+/* Responsive z-index for extra small screens */
+@layer utilities {
+    .xs\:z-0 {
+        z-index: 0;
+    }
+
+    .xs\:z-10 {
+        z-index: 10;
+    }
+
+    .xs\:z-20 {
+        z-index: 20;
+    }
+
+    .xs\:z-30 {
+        z-index: 30;
+    }
+
+    .xs\:z-40 {
+        z-index: 40;
+    }
+
+    .xs\:z-50 {
+        z-index: 50;
+    }
+}
+
+/* Responsive transform for extra small screens */
+@layer utilities {
+    .xs\:transform {
+        transform: translateZ(0);
+    }
+
+    .xs\:scale-0 {
+        transform: scale(0);
+    }
+
+    .xs\:scale-50 {
+        transform: scale(0.5);
+    }
+
+    .xs\:scale-75 {
+        transform: scale(0.75);
+    }
+
+    .xs\:scale-90 {
+        transform: scale(0.9);
+    }
+
+    .xs\:scale-95 {
+        transform: scale(0.95);
+    }
+
+    .xs\:scale-100 {
+        transform: scale(1);
+    }
+
+    .xs\:scale-105 {
+        transform: scale(1.05);
+    }
+
+    .xs\:scale-110 {
+        transform: scale(1.1);
+    }
+
+    .xs\:scale-125 {
+        transform: scale(1.25);
+    }
+
+    .xs\:scale-150 {
+        transform: scale(1.5);
+    }
+}
+
+/* Responsive transition for extra small screens */
+@layer utilities {
+    .xs\:transition-none {
+        transition-property: none;
+    }
+
+    .xs\:transition-all {
+        transition-property: all;
+    }
+
+    .xs\:transition-colors {
+        transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+    }
+
+    .xs\:transition-opacity {
+        transition-property: opacity;
+    }
+
+    .xs\:transition-shadow {
+        transition-property: box-shadow;
+    }
+
+    .xs\:transition-transform {
+        transition-property: transform;
+    }
+
+    .xs\:duration-75 {
+        transition-duration: 75ms;
+    }
+
+    .xs\:duration-100 {
+        transition-duration: 100ms;
+    }
+
+    .xs\:duration-150 {
+        transition-duration: 150ms;
+    }
+
+    .xs\:duration-200 {
+        transition-duration: 200ms;
+    }
+
+    .xs\:duration-300 {
+        transition-duration: 300ms;
+    }
+
+    .xs\:duration-500 {
+        transition-duration: 500ms;
+    }
+
+    .xs\:duration-700 {
+        transition-duration: 700ms;
+    }
+
+    .xs\:duration-1000 {
+        transition-duration: 1000ms;
+    }
+}
+
+/* Responsive ease for extra small screens */
+@layer utilities {
+    .xs\:ease-linear {
+        transition-timing-function: linear;
+    }
+
+    .xs\:ease-in {
+        transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
+    }
+
+    .xs\:ease-out {
+        transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+    }
+
+    .xs\:ease-in-out {
+        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    }
+}
+
+/* Responsive animation for extra small screens */
+@layer utilities {
+    .xs\:animate-none {
+        animation: none;
+    }
+
+    .xs\:animate-spin {
+        animation: spin 1s linear infinite;
+    }
+
+    .xs\:animate-ping {
+        animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+    }
+
+    .xs\:animate-pulse {
+        animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+
+    .xs\:animate-bounce {
+        animation: bounce 1s infinite;
+    }
+}
+
+/* Responsive cursor for extra small screens */
+@layer utilities {
+    .xs\:cursor-auto {
+        cursor: auto;
+    }
+
+    .xs\:cursor-default {
+        cursor: default;
+    }
+
+    .xs\:cursor-pointer {
+        cursor: pointer;
+    }
+
+    .xs\:cursor-wait {
+        cursor: wait;
+    }
+
+    .xs\:cursor-text {
+        cursor: text;
+    }
+
+    .xs\:cursor-move {
+        cursor: move;
+    }
+
+    .xs\:cursor-help {
+        cursor: help;
+    }
+
+    .xs\:cursor-not-allowed {
+        cursor: not-allowed;
+    }
+}
+
+/* Responsive user select for extra small screens */
+@layer utilities {
+    .xs\:select-none {
+        user-select: none;
+    }
+
+    .xs\:select-text {
+        user-select: text;
+    }
+
+    .xs\:select-all {
+        user-select: all;
+    }
+
+    .xs\:select-auto {
+        user-select: auto;
+    }
+}
+
+/* Responsive appearance for extra small screens */
+@layer utilities {
+    .xs\:appearance-none {
+        appearance: none;
+    }
+}
+
+/* Responsive pointer events for extra small screens */
+@layer utilities {
+    .xs\:pointer-events-none {
+        pointer-events: none;
+    }
+
+    .xs\:pointer-events-auto {
+        pointer-events: auto;
+    }
+}
+
+/* Responsive resize for extra small screens */
+@layer utilities {
+    .xs\:resize-none {
+        resize: none;
+    }
+
+    .xs\:resize-y {
+        resize: vertical;
+    }
+
+    .xs\:resize-x {
+        resize: horizontal;
+    }
+
+    .xs\:resize {
+        resize: both;
+    }
+}
+
+/* Responsive fill for extra small screens */
+@layer utilities {
+    .xs\:fill-current {
+        fill: currentColor;
+    }
+}
+
+/* Responsive stroke for extra small screens */
+@layer utilities {
+    .xs\:stroke-current {
+        stroke: currentColor;
+    }
+}
+
+/* Responsive stroke width for extra small screens */
+@layer utilities {
+    .xs\:stroke-0 {
+        stroke-width: 0;
+    }
+
+    .xs\:stroke-1 {
+        stroke-width: 1;
+    }
+
+    .xs\:stroke-2 {
+        stroke-width: 2;
+    }
+}
+
+/* Responsive screen reader only for extra small screens */
+@layer utilities {
+    .xs\:sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+    }
+
+    .xs\:not-sr-only {
+        position: static;
+        width: auto;
+        height: auto;
+        padding: 0;
+        margin: 0;
+        overflow: visible;
+        clip: auto;
+        white-space: normal;
+    }
+}

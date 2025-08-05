@@ -1,0 +1,99 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Models\Event;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+
+class AdminPengelolaAgendaController extends Controller
+{
+    public function index()
+    {
+        $events = Event::whereNull('deleted_at')
+            ->orderBy('created_at', 'desc')
+            ->paginate(12);
+
+        return view('management.events.index', compact('events'));
+    }
+
+    public function create()
+    {
+        return view('management.events.create');
+    }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'description' => 'required|string',
+            'event_date' => 'required|date',
+            'event_time' => 'nullable|string|max:255',
+            'location' => 'nullable|string|max:255',
+            'status' => 'required|in:upcoming,ongoing,completed,cancelled',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+
+        $data = $request->all();
+
+        // Handle image upload
+        if ($request->hasFile('image')) {
+            $data['image_path'] = $request->file('image')->store('events/images', 'public');
+        }
+
+        Event::create($data);
+
+        return redirect()->route('events-management.index')->with('success', 'Agenda berhasil ditambahkan');
+    }
+
+    public function edit($id)
+    {
+        $event = Event::findOrFail($id);
+
+        return view('management.events.edit', compact('event'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $event = Event::findOrFail($id);
+
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'description' => 'required|string',
+            'event_date' => 'required|date',
+            'event_time' => 'nullable|string|max:255',
+            'location' => 'nullable|string|max:255',
+            'status' => 'required|in:upcoming,ongoing,completed,cancelled',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+
+        $data = $request->all();
+
+        // Handle image upload
+        if ($request->hasFile('image')) {
+            if ($event->image_path) {
+                Storage::disk('public')->delete($event->image_path);
+            }
+            $data['image_path'] = $request->file('image')->store('events/images', 'public');
+        }
+
+        $event->update($data);
+
+        return redirect()->route('events-management.index')->with('success', 'Agenda berhasil diperbarui');
+    }
+
+    public function destroy($id)
+    {
+        $event = Event::findOrFail($id);
+
+        // Delete associated image
+        if ($event->image_path) {
+            Storage::disk('public')->delete($event->image_path);
+        }
+
+        $event->delete();
+
+        return redirect()->route('events-management.index')->with('success', 'Agenda berhasil dihapus');
+    }
+}

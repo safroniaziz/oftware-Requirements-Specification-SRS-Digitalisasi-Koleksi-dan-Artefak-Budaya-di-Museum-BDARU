@@ -1,0 +1,128 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Models\Collection;
+use App\Models\Category;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+
+class AdminPengelolaKoleksiController extends Controller
+{
+    public function index()
+    {
+        $collections = Collection::with('category')
+            ->orderBy('created_at', 'desc')
+            ->paginate(10);
+
+        $categories = Category::all();
+
+        return view('management.collections.index', compact('collections', 'categories'));
+    }
+
+    public function create()
+    {
+        $categories = Category::all();
+        return view('management.collections.create', compact('categories'));
+    }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'category_id' => 'required|exists:categories,id',
+            'description' => 'required|string',
+            'year_period' => 'nullable|string|max:255',
+            'origin_location' => 'nullable|string|max:255',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'gallery_images.*' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'history_content' => 'nullable|string',
+            'cultural_significance' => 'nullable|string',
+            'technical_specifications' => 'nullable|string',
+            'conservation_info' => 'nullable|string',
+            'material' => 'nullable|string|max:255',
+            'dimensions' => 'nullable|string|max:255',
+            'conservation_status' => 'nullable|string|max:255',
+            'rating' => 'nullable|numeric|min:0|max:5',
+        ]);
+
+        $data = $request->all();
+
+        // Handle boolean fields
+        $data['is_active'] = $request->has('is_active');
+        $data['is_featured'] = $request->has('is_featured');
+
+        // Handle image upload
+        if ($request->hasFile('image')) {
+            $data['image_path'] = $request->file('image')->store('collections/images', 'public');
+        }
+
+        // Handle gallery images upload
+        if ($request->hasFile('gallery_images')) {
+            $galleryPaths = [];
+            foreach ($request->file('gallery_images') as $image) {
+                $galleryPaths[] = $image->store('collections/gallery', 'public');
+            }
+            $data['gallery_images'] = $galleryPaths;
+        }
+
+        Collection::create($data);
+
+        return redirect()->route('collections-management.index')->with('success', 'Koleksi berhasil ditambahkan');
+    }
+
+    public function edit($id)
+    {
+        $collection = Collection::findOrFail($id);
+        $categories = Category::all();
+
+        return view('management.collections.edit', compact('collection', 'categories'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $collection = Collection::findOrFail($id);
+
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'category_id' => 'required|exists:categories,id',
+            'description' => 'required|string',
+            'year_period' => 'nullable|string|max:255',
+            'origin_location' => 'nullable|string|max:255',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+
+        $data = $request->all();
+
+        // Handle boolean fields
+        $data['is_active'] = $request->has('is_active');
+        $data['is_featured'] = $request->has('is_featured');
+
+        // Handle image upload
+        if ($request->hasFile('image')) {
+            if ($collection->image_path) {
+                Storage::disk('public')->delete($collection->image_path);
+            }
+            $data['image_path'] = $request->file('image')->store('collections/images', 'public');
+        }
+
+        $collection->update($data);
+
+        return redirect()->route('collections-management.index')->with('success', 'Koleksi berhasil diperbarui');
+    }
+
+    public function destroy($id)
+    {
+        $collection = Collection::findOrFail($id);
+
+        // Delete associated image
+        if ($collection->image_path) {
+            Storage::disk('public')->delete($collection->image_path);
+        }
+
+        $collection->delete();
+
+        return redirect()->route('collections-management.index')->with('success', 'Koleksi berhasil dihapus');
+    }
+}
