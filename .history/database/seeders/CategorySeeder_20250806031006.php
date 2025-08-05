@@ -62,6 +62,7 @@ class CategorySeeder extends Seeder
                 'name' => $category['name'],
                 'slug' => Str::slug($category['name']),
                 'description' => $category['description'],
+                'icon' => $category['icon'],
                 'is_active' => $category['is_active']
             ]);
         }
