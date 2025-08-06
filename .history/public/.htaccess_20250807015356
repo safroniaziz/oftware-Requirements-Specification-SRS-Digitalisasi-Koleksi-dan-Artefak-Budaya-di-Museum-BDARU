@@ -1,0 +1,37 @@
+ .<IfModule mod_rewrite.c>
+    <IfModule mod_negotiation.c>
+        Options -MultiViews -Indexes
+    </IfModule>
+
+    RewriteEngine On
+
+    # Handle Authorization Header
+    RewriteCond %{HTTP:Authorization} .
+    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+    # Redirect Trailing Slashes If Not A Folder...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_URI} (.+)/$
+    RewriteRule ^ %1 [L,R=301]
+
+    # Send Requests To Front Controller...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ index.php [L]
+
+    # Handle QR Code SVG files
+    RewriteRule ^qr-code/([A-Z0-9-]+\.svg)$ /storage/qr-codes/$1 [L]
+</IfModule>
+
+# Set proper MIME types for SVG files
+<IfModule mod_mime.c>
+    AddType image/svg+xml .svg
+</IfModule>
+
+# Enable CORS for SVG files
+<IfModule mod_headers.c>
+    <FilesMatch "\.svg$">
+        Header set Access-Control-Allow-Origin "*"
+        Header set Cache-Control "public, max-age=31536000"
+    </FilesMatch>
+</IfModule>

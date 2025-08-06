@@ -19,6 +19,10 @@ const props = defineProps({
         type: Array,
         default: () => []
     },
+    qrCode: {
+        type: Object,
+        default: null
+    },
     canLogin: {
         type: Boolean,
     },
@@ -41,7 +45,6 @@ const isAuthenticated = computed(() => {
 });
 
 // Reactive data
-const activeTab = ref('overview');
 const showFullDescription = ref(false);
 const mobileMenuOpen = ref(false);
 const imageLoaded = ref(props.collection.image_url ? false : true); // If no image, set to true immediately
@@ -51,13 +54,7 @@ const hoverRating = ref(0);
 const userComment = ref('');
 const isSubmitting = ref(false);
 
-// Debug: Log collection data on mount
-onMounted(() => {
-    console.log('Collection data:', props.collection);
-    console.log('Gallery images:', props.collection.gallery_images);
-    console.log('Gallery images count:', props.collection.gallery_images?.length);
-    console.log('Active tab:', activeTab.value);
-});
+
 
 
 
@@ -147,7 +144,7 @@ const submitRating = async () => {
             headers['X-CSRF-TOKEN'] = csrfToken;
         }
 
-        const response = await fetch(`/collections/${props.collection.id}/ratings`, {
+        const response = await fetch(`/collections/${props.collection.slug}/ratings`, {
             method: 'POST',
             headers,
             body: JSON.stringify({
@@ -418,27 +415,42 @@ onMounted(() => {
                 <div class="flex items-center group">
                     <div class="flex-shrink-0 relative">
                         <div class="flex items-center space-x-3">
-                            <!-- Premium Logo Icon -->
+                            <!-- Static BDARU Logo -->
                             <div class="relative">
-                                <div class="w-12 h-12 bg-gradient-to-br from-emerald-500 via-teal-500 to-cyan-500 rounded-2xl flex items-center justify-center shadow-xl transform group-hover:scale-110 transition-all duration-500 relative overflow-hidden">
-                                    <!-- Premium Museum Icon -->
-                                    <div class="w-8 h-6 bg-white/95 rounded-lg relative">
-                                        <!-- Premium Building Structure -->
-                                        <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-emerald-600 to-teal-600"></div>
-                                        <div class="absolute top-2 left-1 right-1 h-0.5 bg-gray-800"></div>
-                                        <div class="absolute top-4 left-1 right-1 h-0.5 bg-gray-800"></div>
-                                        <!-- Premium Windows -->
-                                        <div class="absolute top-1 left-1 w-1 h-1 bg-emerald-500 rounded-sm"></div>
-                                        <div class="absolute top-1 right-1 w-1 h-1 bg-emerald-500 rounded-sm"></div>
-                                        <div class="absolute top-3 left-1 w-1 h-1 bg-teal-500 rounded-sm"></div>
-                                        <div class="absolute top-3 right-1 w-1 h-1 bg-teal-500 rounded-sm"></div>
-                                        <!-- Premium Door -->
-                                        <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-gray-700 rounded-t-sm"></div>
+                                <div class="w-16 h-16 rounded-2xl flex items-center justify-center shadow-xl transform group-hover:scale-110 transition-all duration-500 relative overflow-hidden">
+                                    <img
+                                        src="/assets/src/images/bdaru.jpeg"
+                                        alt="BDARU Museum"
+                                        class="w-full h-full object-cover rounded-2xl"
+                                        @error="$event.target.style.display='none'; $event.target.nextElementSibling.style.display='flex'"
+                                    />
+                                    <!-- Fallback Icon if image fails to load -->
+                                    <div class="w-16 h-16 bg-gradient-to-br from-emerald-500 via-teal-500 to-cyan-500 rounded-2xl flex items-center justify-center shadow-xl transform group-hover:scale-110 transition-all duration-500 relative overflow-hidden" style="display: none;">
+                                        <!-- Premium Museum Icon -->
+                                        <div class="w-10 h-8 bg-white/95 rounded-lg relative">
+                                            <!-- Premium Building Structure -->
+                                            <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-emerald-600 to-teal-600"></div>
+                                            <div class="absolute top-2 left-1 right-1 h-0.5 bg-gray-800"></div>
+                                            <div class="absolute top-4 left-1 right-1 h-0.5 bg-gray-800"></div>
+                                            <div class="absolute top-6 left-1 right-1 h-0.5 bg-gray-800"></div>
+                                            <!-- Premium Windows -->
+                                            <div class="absolute top-1 left-1 w-1 h-1 bg-emerald-500 rounded-sm"></div>
+                                            <div class="absolute top-1 right-1 w-1 h-1 bg-emerald-500 rounded-sm"></div>
+                                            <div class="absolute top-3 left-1 w-1 h-1 bg-teal-500 rounded-sm"></div>
+                                            <div class="absolute top-3 right-1 w-1 h-1 bg-teal-500 rounded-sm"></div>
+                                            <div class="absolute top-5 left-1 w-1 h-1 bg-cyan-500 rounded-sm"></div>
+                                            <div class="absolute top-5 right-1 w-1 h-1 bg-cyan-500 rounded-sm"></div>
+                                            <!-- Premium Door -->
+                                            <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-gray-700 rounded-t-sm"></div>
+                                        </div>
+                                        <!-- Enhanced Glow Effect -->
+                                        <div class="absolute inset-0 bg-gradient-to-br from-emerald-400/30 to-teal-500/30 rounded-2xl blur-sm group-hover:blur-md transition-all duration-500"></div>
                                     </div>
-                                    <!-- Enhanced Glow Effect -->
-                                    <div class="absolute inset-0 bg-gradient-to-br from-emerald-400/30 to-teal-500/30 rounded-2xl blur-sm group-hover:blur-md transition-all duration-500"></div>
+                                    <!-- Enhanced Floating Particles -->
+                                    <div class="absolute -top-1 -right-1 w-2 h-2 bg-emerald-400 rounded-full animate-ping"></div>
+                                    <div class="absolute -bottom-1 -left-1 w-1.5 h-1.5 bg-teal-400 rounded-full animate-ping delay-1000"></div>
+                                    <div class="absolute top-1/2 -right-0.5 w-1 h-1 bg-cyan-400 rounded-full animate-ping delay-500"></div>
                                 </div>
-                                <!-- Enhanced Floating Particles -->
                                 <div class="absolute -top-1 -right-1 w-2 h-2 bg-emerald-400 rounded-full animate-ping"></div>
                                 <div class="absolute -bottom-1 -left-1 w-1.5 h-1.5 bg-teal-400 rounded-full animate-ping delay-1000"></div>
                                 <div class="absolute top-1/2 -right-0.5 w-1 h-1 bg-cyan-400 rounded-full animate-ping delay-500"></div>
@@ -446,7 +458,7 @@ onMounted(() => {
 
                             <!-- Enhanced Typography -->
                             <div class="flex flex-col">
-                                <h1 class="text-2xl font-black bg-gradient-to-r from-emerald-700 via-teal-700 to-cyan-700 bg-clip-text text-transparent group-hover:scale-105 transition-transform duration-300">
+                                <h1 class="text-3xl font-black bg-gradient-to-r from-emerald-700 via-teal-700 to-cyan-700 bg-clip-text text-transparent group-hover:scale-105 transition-transform duration-300">
                                     BDARU
                                 </h1>
                                 <p class="text-xs text-gray-700 font-semibold tracking-wider uppercase opacity-90 group-hover:opacity-100 transition-opacity duration-300">
@@ -458,7 +470,7 @@ onMounted(() => {
                 </div>
 
                 <!-- Desktop Auth Buttons -->
-                <div class="hidden lg:flex items-center space-x-4 flex-shrink-0">
+                <div class="hidden lg:flex items-center space-x-4">
                     <!-- Show user info and logout when logged in -->
                     <div v-if="$page.props.auth.user" class="flex items-center space-x-4">
                         <div class="flex items-center space-x-3 px-4 py-2 bg-emerald-50 rounded-xl border border-emerald-200">
@@ -490,6 +502,7 @@ onMounted(() => {
                     <!-- Show login/register when not logged in -->
                     <template v-else>
                         <a
+                            v-if="canLogin"
                             href="/login"
                             class="group relative px-8 py-3 text-gray-700 font-bold rounded-xl border-2 border-gray-200 hover:border-emerald-400 hover:text-emerald-600 transition-all duration-300 overflow-hidden"
                         >
@@ -502,6 +515,7 @@ onMounted(() => {
                             <div class="absolute inset-0 bg-gradient-to-r from-emerald-50 to-teal-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                         </a>
                         <Link
+                            v-if="canRegister"
                             :href="route('register')"
                             class="group relative px-8 py-3 bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-bold rounded-xl shadow-2xl hover:shadow-emerald-500/25 transform hover:-translate-y-1 hover:scale-105 transition-all duration-300 overflow-hidden"
                         >
@@ -517,7 +531,7 @@ onMounted(() => {
                 </div>
 
                 <!-- Mobile Hamburger Menu Button -->
-                <div class="lg:hidden flex-shrink-0">
+                <div class="lg:hidden">
                     <button
                         @click="mobileMenuOpen = !mobileMenuOpen"
                         class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-emerald-600 hover:bg-emerald-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-emerald-500 transition-all duration-300"
@@ -990,64 +1004,12 @@ onMounted(() => {
     <!-- Content Tabs Section -->
     <section class="py-16 bg-white">
         <div class="w-full lg:w-4/5 mx-auto px-4 sm:px-6 lg:px-8">
-            <!-- Tab Navigation -->
-            <div class="flex flex-wrap justify-center border-b border-gray-200 mb-12">
-                <button
-                    @click="activeTab = 'overview'"
-                    :class="[
-                        'px-6 py-3 font-semibold text-sm border-b-2 transition-all duration-300',
-                        activeTab === 'overview'
-                            ? 'border-emerald-500 text-emerald-600'
-                            : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
-                    ]"
-                >
-                    <span class="flex items-center space-x-2">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                        </svg>
-                        <span>Overview</span>
-                    </span>
-                </button>
-                <button
-                    @click="activeTab = 'gallery'"
-                    :class="[
-                        'px-6 py-3 font-semibold text-sm border-b-2 transition-all duration-300',
-                        activeTab === 'gallery'
-                            ? 'border-emerald-500 text-emerald-600'
-                            : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
-                    ]"
-                >
-                    <span class="flex items-center space-x-2">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                        </svg>
-                        <span>Galeri</span>
-                    </span>
-                </button>
-                <button
-                    @click="activeTab = 'ratings'"
-                    :class="[
-                        'px-6 py-3 font-semibold text-sm border-b-2 transition-all duration-300',
-                        activeTab === 'ratings'
-                            ? 'border-emerald-500 text-emerald-600'
-                            : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
-                    ]"
-                >
-                    <span class="flex items-center space-x-2">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.363 1.118l1.07 3.292c.3.922-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.783.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                        </svg>
-                        <span>Rating & Ulasan</span>
-                    </span>
-                </button>
-            </div>
-
-            <!-- Tab Content -->
-            <div class="min-h-[400px]">
+            <!-- Content Sections -->
+            <div class="space-y-16">
 
 
-                <!-- Overview Tab -->
-                <div v-if="activeTab === 'overview'" class="space-y-8" data-aos="fade-up">
+                <!-- Overview Section -->
+                <div class="space-y-8" data-aos="fade-up">
                     <!-- Description Section -->
                     <div class="prose prose-lg max-w-none">
                         <h2 class="text-3xl font-bold text-gray-900 mb-6">Deskripsi Koleksi</h2>
@@ -1133,7 +1095,7 @@ onMounted(() => {
                                     <div class="flex items-center space-x-2">
                                         <div class="flex items-center">
                                             <span class="text-yellow-500 text-lg">★</span>
-                                            <span class="text-gray-900 font-semibold ml-1">{{ collection.average_rating ? collection.average_rating.toFixed(1) : '0.0' }}</span>
+                                            <span class="text-gray-900 font-semibold ml-1">{{ collection.average_rating ? (typeof collection.average_rating === 'number' ? collection.average_rating.toFixed(1) : parseFloat(collection.average_rating).toFixed(1)) : '0.0' }}</span>
                                         </div>
                                         <span class="text-gray-500 text-sm">({{ collection.rating_count || 0 }} ulasan)</span>
                                     </div>
@@ -1216,29 +1178,21 @@ onMounted(() => {
                     </div>
                 </div>
 
-                                                                <!-- Gallery Tab -->
-                <div v-if="activeTab === 'gallery'" class="space-y-8">
-                    <div class="bg-red-500 text-white p-8 rounded-lg">
-                        <h3 class="text-2xl font-bold mb-4">GALERI TAB BERFUNGSI!</h3>
-                        <p>Active Tab: {{ activeTab }}</p>
-                        <p>Gallery Images Count: {{ collection.gallery_images ? collection.gallery_images.length : 'NULL' }}</p>
-                        <p>Collection Name: {{ collection.name }}</p>
-                    </div>
-                </div>
+
                     <div class="bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
                         <h3 class="text-2xl font-bold text-gray-900 mb-6">Galeri Detail</h3>
 
                         <!-- Gallery Images -->
-                        <div v-if="collection.gallery_images && collection.gallery_images.length > 0">
-                            <h4 class="text-lg font-semibold text-gray-800 mb-4">Galeri Tambahan ({{ collection.gallery_images.length }} gambar)</h4>
+                        <div v-if="collection.galleryImages && collection.galleryImages.length > 0">
+                            <h4 class="text-lg font-semibold text-gray-800 mb-4">Galeri Tambahan ({{ collection.galleryImages.length }} gambar)</h4>
                             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                                 <div
-                                    v-for="galleryImage in collection.gallery_images"
+                                    v-for="galleryImage in collection.galleryImages"
                                     :key="galleryImage.id"
                                     class="group relative overflow-hidden rounded-xl bg-gray-100"
                                 >
                                     <img
-                                        :src="`/storage/${galleryImage.image_path}`"
+                                        :src="galleryImage.image_url"
                                         :alt="galleryImage.caption || collection.name"
                                         class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
                                         @error="handleImageError"
@@ -1272,8 +1226,38 @@ onMounted(() => {
                     </div>
                 </div>
 
-                <!-- Ratings Tab -->
-                <div v-if="activeTab === 'ratings'" class="space-y-8" data-aos="fade-up">
+                <!-- QR Code Section -->
+                <div v-if="qrCode" class="space-y-8" data-aos="fade-up">
+                    <div class="bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-6">QR Code Koleksi</h3>
+                        <div class="text-center">
+                            <div class="inline-block p-4 bg-gray-50 rounded-xl">
+                                <img
+                                    :src="qrCode.qr_image_url"
+                                    :alt="`QR Code ${collection.name}`"
+                                    class="w-48 h-48 mx-auto border-2 border-gray-200 rounded-lg"
+                                />
+                            </div>
+                            <div class="mt-4 space-y-2">
+                                <p class="text-sm text-gray-600">
+                                    <strong>Kode QR:</strong> <code class="bg-gray-100 px-2 py-1 rounded">{{ qrCode.qr_code }}</code>
+                                </p>
+                                <p class="text-sm text-gray-600">
+                                    <strong>Total Scan:</strong> {{ qrCode.scan_count || 0 }} kali
+                                </p>
+                                <p v-if="qrCode.last_scanned_at" class="text-sm text-gray-600">
+                                    <strong>Terakhir di-scan:</strong> {{ new Date(qrCode.last_scanned_at).toLocaleDateString('id-ID') }}
+                                </p>
+                                <p class="text-xs text-gray-500 mt-4">
+                                    Scan QR code ini untuk mengakses halaman koleksi ini dengan cepat
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ratings Section -->
+                <div class="space-y-8" data-aos="fade-up">
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
                         <!-- Rating Form Card - Only show for authenticated users -->
                         <div v-if="isAuthenticated" class="bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
@@ -1402,8 +1386,6 @@ onMounted(() => {
                 </div>
             </div>
         </div>
-        </div>
-
     </section>
 
     <!-- Related Collections Section -->
@@ -1521,30 +1503,42 @@ onMounted(() => {
                     <div class="flex items-center group mb-6">
                         <div class="flex-shrink-0 relative">
                             <div class="flex items-center space-x-3">
-                                <!-- Premium Logo Icon -->
+                                <!-- Static BDARU Logo -->
                                 <div class="relative">
-                                    <div class="w-16 h-16 bg-gradient-to-br from-emerald-500 via-teal-500 to-cyan-500 rounded-2xl flex items-center justify-center shadow-2xl transform group-hover:scale-110 transition-all duration-500 relative overflow-hidden">
-                                        <!-- Premium Museum Icon -->
-                                        <div class="w-10 h-8 bg-white/95 rounded-lg relative">
-                                            <!-- Premium Building Structure -->
-                                            <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-emerald-600 to-teal-600"></div>
-                                            <div class="absolute top-2 left-1 right-1 h-0.5 bg-gray-800"></div>
-                                            <div class="absolute top-4 left-1 right-1 h-0.5 bg-gray-800"></div>
-                                            <div class="absolute top-6 left-1 right-1 h-0.5 bg-gray-800"></div>
-                                            <!-- Premium Windows -->
-                                            <div class="absolute top-1 left-1 w-1 h-1 bg-emerald-500 rounded-sm"></div>
-                                            <div class="absolute top-1 right-1 w-1 h-1 bg-emerald-500 rounded-sm"></div>
-                                            <div class="absolute top-3 left-1 w-1 h-1 bg-teal-500 rounded-sm"></div>
-                                            <div class="absolute top-3 right-1 w-1 h-1 bg-teal-500 rounded-sm"></div>
-                                            <div class="absolute top-5 left-1 w-1 h-1 bg-cyan-500 rounded-sm"></div>
-                                            <div class="absolute top-5 right-1 w-1 h-1 bg-cyan-500 rounded-sm"></div>
-                                            <!-- Premium Door -->
-                                            <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-gray-700 rounded-t-sm"></div>
+                                    <div class="w-16 h-16 rounded-2xl flex items-center justify-center shadow-xl transform group-hover:scale-110 transition-all duration-500 relative overflow-hidden">
+                                        <img
+                                            src="/assets/src/images/bdaru.jpeg"
+                                            alt="BDARU Museum"
+                                            class="w-full h-full object-cover rounded-2xl"
+                                            @error="$event.target.style.display='none'; $event.target.nextElementSibling.style.display='flex'"
+                                        />
+                                        <!-- Fallback Icon if image fails to load -->
+                                        <div class="w-16 h-16 bg-gradient-to-br from-emerald-500 via-teal-500 to-cyan-500 rounded-2xl flex items-center justify-center shadow-xl transform group-hover:scale-110 transition-all duration-500 relative overflow-hidden" style="display: none;">
+                                            <!-- Premium Museum Icon -->
+                                            <div class="w-10 h-8 bg-white/95 rounded-lg relative">
+                                                <!-- Premium Building Structure -->
+                                                <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-emerald-600 to-teal-600"></div>
+                                                <div class="absolute top-2 left-1 right-1 h-0.5 bg-gray-800"></div>
+                                                <div class="absolute top-4 left-1 right-1 h-0.5 bg-gray-800"></div>
+                                                <div class="absolute top-6 left-1 right-1 h-0.5 bg-gray-800"></div>
+                                                <!-- Premium Windows -->
+                                                <div class="absolute top-1 left-1 w-1 h-1 bg-emerald-500 rounded-sm"></div>
+                                                <div class="absolute top-1 right-1 w-1 h-1 bg-emerald-500 rounded-sm"></div>
+                                                <div class="absolute top-3 left-1 w-1 h-1 bg-teal-500 rounded-sm"></div>
+                                                <div class="absolute top-3 right-1 w-1 h-1 bg-teal-500 rounded-sm"></div>
+                                                <div class="absolute top-5 left-1 w-1 h-1 bg-cyan-500 rounded-sm"></div>
+                                                <div class="absolute top-5 right-1 w-1 h-1 bg-cyan-500 rounded-sm"></div>
+                                                <!-- Premium Door -->
+                                                <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-gray-700 rounded-t-sm"></div>
+                                            </div>
+                                            <!-- Enhanced Glow Effect -->
+                                            <div class="absolute inset-0 bg-gradient-to-br from-emerald-400/30 to-teal-500/30 rounded-2xl blur-sm group-hover:blur-md transition-all duration-500"></div>
                                         </div>
-                                        <!-- Enhanced Glow Effect -->
-                                        <div class="absolute inset-0 bg-gradient-to-br from-emerald-400/30 to-teal-500/30 rounded-2xl blur-sm group-hover:blur-md transition-all duration-500"></div>
+                                        <!-- Enhanced Floating Particles -->
+                                        <div class="absolute -top-1 -right-1 w-2 h-2 bg-emerald-400 rounded-full animate-ping"></div>
+                                        <div class="absolute -bottom-1 -left-1 w-1.5 h-1.5 bg-teal-400 rounded-full animate-ping delay-1000"></div>
+                                        <div class="absolute top-1/2 -right-0.5 w-1 h-1 bg-cyan-400 rounded-full animate-ping delay-500"></div>
                                     </div>
-                                    <!-- Enhanced Floating Particles -->
                                     <div class="absolute -top-1 -right-1 w-2 h-2 bg-emerald-400 rounded-full animate-ping"></div>
                                     <div class="absolute -bottom-1 -left-1 w-1.5 h-1.5 bg-teal-400 rounded-full animate-ping delay-1000"></div>
                                     <div class="absolute top-1/2 -right-0.5 w-1 h-1 bg-cyan-400 rounded-full animate-ping delay-500"></div>
@@ -1552,10 +1546,10 @@ onMounted(() => {
 
                                 <!-- Enhanced Typography -->
                                 <div class="flex flex-col">
-                                    <h1 class="text-3xl font-black bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400 bg-clip-text text-transparent group-hover:scale-105 transition-transform duration-300">
+                                    <h1 class="text-3xl font-black bg-gradient-to-r from-emerald-700 via-teal-700 to-cyan-700 bg-clip-text text-transparent group-hover:scale-105 transition-transform duration-300">
                                         BDARU
                                     </h1>
-                                    <p class="text-sm text-gray-300 font-semibold tracking-wider uppercase opacity-90 group-hover:opacity-100 transition-opacity duration-300">
+                                    <p class="text-xs text-gray-700 font-semibold tracking-wider uppercase opacity-90 group-hover:opacity-100 transition-opacity duration-300">
                                         Museum Digital Indonesia
                                     </p>
                                 </div>
