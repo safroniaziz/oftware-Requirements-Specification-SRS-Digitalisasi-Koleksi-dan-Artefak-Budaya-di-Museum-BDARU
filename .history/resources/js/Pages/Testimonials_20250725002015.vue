@@ -240,7 +240,7 @@ function initParticleSystem() {
 </script>
 
 <template>
-    <Head title="Testimoni Pengunjung - BDARU Museum Digital Indonesia" />
+    <Head title="Testimoni Pengunjung - BDARU Museum Digital Balai Adat Rajo Penghulu" />
 
     <!-- Modern Fixed Navigation Bar -->
     <div class="fixed top-0 left-0 right-0 bg-white/98 backdrop-blur-xl border-b border-gray-200/50 shadow-lg z-50">
@@ -282,7 +282,7 @@ function initParticleSystem() {
                                     BDARU
                                 </h1>
                                 <p class="text-xs text-gray-700 font-semibold tracking-wider uppercase opacity-90 group-hover:opacity-100 transition-opacity duration-300">
-                                    Museum Digital Indonesia
+                                    Museum Digital Balai Adat Rajo Penghulu
                                 </p>
                             </div>
                         </div>
@@ -787,7 +787,7 @@ function initParticleSystem() {
                                         BDARU
                                     </h1>
                                     <p class="text-sm text-gray-300 font-semibold tracking-wider uppercase opacity-90 group-hover:opacity-100 transition-opacity duration-300">
-                                        Museum Digital Indonesia
+                                        Museum Digital Balai Adat Rajo Penghulu
                                     </p>
                                 </div>
                             </div>
@@ -906,7 +906,7 @@ function initParticleSystem() {
             <div class="border-t border-gray-800 pt-8 mt-12">
                 <div class="flex flex-col md:flex-row justify-between items-center">
                     <p class="text-gray-400 text-sm text-center md:text-left">
-                        © 2024 BDARU Museum Digital Indonesia. All rights reserved.
+                        © 2024 BDARU Museum Digital Balai Adat Rajo Penghulu. All rights reserved.
                     </p>
                     <div class="flex items-center space-x-6 mt-4 md:mt-0">
                         <Link href="/privacy" class="text-gray-400 hover:text-emerald-400 text-sm transition-colors duration-300">

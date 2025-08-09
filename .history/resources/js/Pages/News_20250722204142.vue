@@ -1,5 +1,5 @@
 <template>
-    <Head title="Berita Terbaru - BDARU Museum Digital Indonesia" />
+    <Head title="Berita Terbaru - BDARU Museum Digital Balai Adat Rajo Penghulu" />
 
     <!-- Header -->
     <header class="bg-white shadow-sm border-b border-gray-100 sticky top-0 z-40">
@@ -58,7 +58,7 @@
                     Berita <span class="text-emerald-600">Museum</span> Digital
                 </h1>
                 <p class="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed mb-6">
-                    Temukan berita terbaru seputar koleksi, pameran, dan perkembangan museum digital Indonesia
+                    Temukan berita terbaru seputar koleksi, pameran, dan perkembangan Museum Digital Balai Adat Rajo Penghulu
                 </p>
 
                 <!-- Search Bar -->
@@ -310,7 +310,7 @@
                         </div>
                         <div>
                             <h3 class="text-2xl font-bold">BDARU</h3>
-                            <p class="text-emerald-400 text-sm">Museum Digital Indonesia</p>
+                            <p class="text-emerald-400 text-sm">Museum Digital Balai Adat Rajo Penghulu</p>
                         </div>
                     </div>
                     <p class="text-gray-300 leading-relaxed mb-6 max-w-md">
@@ -374,7 +374,7 @@
             </div>
 
             <div class="border-t border-gray-800 mt-8 pt-8 text-center">
-                <p class="text-gray-400">&copy; 2024 BDARU Museum Digital Indonesia. All rights reserved.</p>
+                <p class="text-gray-400">&copy; 2024 BDARU Museum Digital Balai Adat Rajo Penghulu. All rights reserved.</p>
             </div>
         </div>
     </footer>

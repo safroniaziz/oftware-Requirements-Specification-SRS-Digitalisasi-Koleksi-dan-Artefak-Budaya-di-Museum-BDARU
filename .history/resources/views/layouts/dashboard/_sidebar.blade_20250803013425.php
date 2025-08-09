@@ -14,7 +14,7 @@
             </div>
             <div class="d-flex flex-column ms-3 app-sidebar-logo-default">
                 <span class="fs-3 fw-bolder text-uppercase" style="letter-spacing: 1px; font-family: 'Segoe UI', sans-serif; color: #ffffff; text-shadow: 0 0 10px rgba(255,255,255,0.3);">BDARU</span>
-                <span class="fs-8 fw-light" style="margin-top: -4px; letter-spacing: 0.5px; color: rgba(255,255,255,0.9); text-shadow: 0 0 5px rgba(255,255,255,0.2);">Museum Digital Indonesia</span>
+                <span class="fs-8 fw-light" style="margin-top: -4px; letter-spacing: 0.5px; color: rgba(255,255,255,0.9); text-shadow: 0 0 5px rgba(255,255,255,0.2);">Museum Digital Balai Adat Rajo Penghulu</span>
             </div>
         </a>
 

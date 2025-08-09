@@ -27,7 +27,7 @@ function handleImageError() {
 </script>
 
 <template>
-    <Head title="BDARU - Museum Digital Indonesia" />
+    <Head title="BDARU - Museum Digital Balai Adat Rajo Penghulu" />
 
     <div class="min-h-screen bg-gray-50">
                                         <!-- Fixed Logo Bar -->
@@ -192,7 +192,7 @@ function handleImageError() {
             <div class="relative z-10 text-center text-white w-full lg:w-4/5 mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="mb-8">
                     <div class="inline-flex items-center px-4 py-2 bg-white/20 rounded-full border border-white/30 mb-6">
-                        <span class="text-sm font-medium text-white">🏛️ Museum Digital Indonesia</span>
+                        <span class="text-sm font-medium text-white">🏛️ Museum Digital Balai Adat Rajo Penghulu</span>
                     </div>
                 </div>
 

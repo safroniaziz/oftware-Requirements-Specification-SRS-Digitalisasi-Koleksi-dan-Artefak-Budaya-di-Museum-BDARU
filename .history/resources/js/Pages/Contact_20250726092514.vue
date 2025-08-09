@@ -41,7 +41,7 @@
                                     BDARU
                                 </h1>
                                 <p class="text-xs text-gray-700 font-semibold tracking-wider uppercase opacity-90 group-hover:opacity-100 transition-opacity duration-300">
-                                    {{ props.museumSettings?.museum_name || 'Museum Digital Indonesia BDARU' }}
+                                    {{ props.museumSettings?.museum_name || 'Museum Digital Balai Adat Rajo Penghulu BDARU' }}
                                 </p>
                             </div>
                         </div>
@@ -394,7 +394,7 @@
 
                 <!-- Subtitle -->
                 <p class="text-xl md:text-2xl text-emerald-100 mb-12 max-w-4xl mx-auto leading-relaxed" data-aos="fade-up" data-aos-delay="600">
-                    Kami siap membantu Anda. Silakan hubungi tim kami untuk pertanyaan, saran, atau kolaborasi terkait museum digital Indonesia.
+                    Kami siap membantu Anda. Silakan hubungi tim kami untuk pertanyaan, saran, atau kolaborasi terkait Museum Digital Balai Adat Rajo Penghulu.
                     <br>
                     <span class="text-lg text-emerald-200">Tim kami akan merespons dalam waktu 24 jam.</span>
                 </p>
@@ -481,7 +481,7 @@
                     <div>
                         <h3 class="text-2xl lg:text-3xl font-bold text-gray-900 mb-4 lg:mb-6" data-aos="fade-up">Informasi Kontak</h3>
                         <p class="text-gray-600 mb-6 lg:mb-8 text-sm lg:text-base" data-aos="fade-up" data-aos-delay="200">
-                            Museum Digital Indonesia BDARU berlokasi strategis di pusat Jakarta dengan akses transportasi yang mudah dan fasilitas yang lengkap.
+                            Museum Digital Balai Adat Rajo Penghulu BDARU berlokasi strategis di pusat Jakarta dengan akses transportasi yang mudah dan fasilitas yang lengkap.
                         </p>
                     </div>
 
@@ -693,7 +693,7 @@
             <div class="text-center mb-12">
                 <h2 class="text-3xl font-bold text-gray-900 mb-4">Lokasi Kami</h2>
                 <p class="text-gray-600 max-w-2xl mx-auto">
-                    Museum Digital Indonesia BDARU berlokasi strategis di pusat Jakarta, mudah dijangkau dari berbagai arah.
+                    Museum Digital Balai Adat Rajo Penghulu BDARU berlokasi strategis di pusat Jakarta, mudah dijangkau dari berbagai arah.
                 </p>
             </div>
                         <div class="bg-white rounded-3xl shadow-xl overflow-hidden">
@@ -711,7 +711,7 @@
                                 </svg>
                             </div>
                             <div>
-                                <h4 class="font-bold text-gray-900 text-sm">{{ props.museumSettings?.museum_name || 'Museum Digital Indonesia BDARU' }}</h4>
+                                <h4 class="font-bold text-gray-900 text-sm">{{ props.museumSettings?.museum_name || 'Museum Digital Balai Adat Rajo Penghulu BDARU' }}</h4>
                                 <p class="text-xs text-gray-600">{{ props.museumSettings?.address || 'Jl. Museum Nasional No. 1' }}</p>
                             </div>
                         </div>
@@ -796,7 +796,7 @@
                                         BDARU
                                     </h1>
                                     <p class="text-sm text-gray-300 font-semibold tracking-wider uppercase opacity-90 group-hover:opacity-100 transition-opacity duration-300">
-                                        Museum Digital Indonesia
+                                        Museum Digital Balai Adat Rajo Penghulu
                                     </p>
                                 </div>
                             </div>
@@ -908,7 +908,7 @@
             <div class="border-t border-gray-800 mt-12 pt-8">
                 <div class="flex flex-col md:flex-row justify-between items-center">
                     <p class="text-gray-400 text-sm text-center md:text-left">
-                        © 2024 BDARU {{ props.museumSettings?.museum_name || 'Museum Digital Indonesia BDARU' }}. All rights reserved.
+                        © 2024 BDARU {{ props.museumSettings?.museum_name || 'Museum Digital Balai Adat Rajo Penghulu BDARU' }}. All rights reserved.
                     </p>
                     <div class="flex items-center space-x-6 mt-4 md:mt-0">
                         <Link href="/privacy" class="text-gray-400 hover:text-emerald-400 text-sm transition-colors duration-300">
@@ -1033,7 +1033,7 @@ const initMap = () => {
                         </svg>
                     </div>
                     <div class="popup-title">
-                        <h3 class="font-bold text-gray-900">${props.museumSettings?.museum_name || 'Museum Digital Indonesia BDARU'}</h3>
+                        <h3 class="font-bold text-gray-900">${props.museumSettings?.museum_name || 'Museum Digital Balai Adat Rajo Penghulu BDARU'}</h3>
                         <p class="text-sm text-emerald-600 font-semibold">🏛️ Museum Digital</p>
                     </div>
                 </div>

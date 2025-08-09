@@ -93,7 +93,7 @@
                             BDARU
                         </span>
                     </h1>
-                    <p class="text-gray-600 text-base">Museum Digital Indonesia</p>
+                    <p class="text-gray-600 text-base">Museum Digital Balai Adat Rajo Penghulu</p>
                     <p class="text-gray-500 text-sm mt-1">Bergabunglah dengan komunitas budaya digital</p>
                 </div>
 

@@ -385,7 +385,7 @@ watch(() => props.auth, () => {
 </script>
 
 <template>
-    <Head :title="`Testimoni - ${props.museumSettings?.museum_name || 'BDARU Museum Digital Indonesia'}`" />
+    <Head :title="`Testimoni - ${props.museumSettings?.museum_name || 'BDARU Museum Digital Balai Adat Rajo Penghulu'}`" />
 
     <div class="min-h-screen bg-gray-50">
 
@@ -467,7 +467,7 @@ watch(() => props.auth, () => {
                                         BDARU
                                     </h1>
                                     <p class="text-xs text-gray-700 font-semibold tracking-wider uppercase opacity-90 group-hover:opacity-100 transition-opacity duration-300">
-                                        {{ props.museumSettings?.museum_name || 'Museum Digital Indonesia BDARU' }}
+                                        {{ props.museumSettings?.museum_name || 'Museum Digital Balai Adat Rajo Penghulu BDARU' }}
                                     </p>
                                 </div>
                             </div>
@@ -619,7 +619,7 @@ watch(() => props.auth, () => {
 
                         <!-- Enhanced Subtitle -->
                         <p class="text-lg md:text-xl mb-8 leading-relaxed text-gray-700 font-medium max-w-2xl mx-auto lg:mx-0">
-                            Dengarkan pengalaman langsung dari pengunjung Museum Digital Indonesia BDARU. Bagikan juga pengalaman Anda dan bantu kami terus berkembang.
+                            Dengarkan pengalaman langsung dari pengunjung Museum Digital Balai Adat Rajo Penghulu BDARU. Bagikan juga pengalaman Anda dan bantu kami terus berkembang.
                         </p>
 
                         <!-- Enhanced CTA Buttons -->
@@ -1089,7 +1089,7 @@ watch(() => props.auth, () => {
                                             BDARU
                                         </h1>
                                         <p class="text-xs text-gray-700 font-semibold tracking-wider uppercase opacity-90 group-hover:opacity-100 transition-opacity duration-300">
-                                            {{ props.museumSettings?.museum_name || 'Museum Digital Indonesia BDARU' }}
+                                            {{ props.museumSettings?.museum_name || 'Museum Digital Balai Adat Rajo Penghulu BDARU' }}
                                         </p>
                                     </div>
                                 </div>
@@ -1208,7 +1208,7 @@ watch(() => props.auth, () => {
                 <div class="border-t border-gray-800 pt-8 mt-12">
                     <div class="flex flex-col md:flex-row justify-between items-center">
                         <p class="text-gray-400 text-sm text-center md:text-left">
-                            © 2024 BDARU {{ props.museumSettings?.museum_name || 'Museum Digital Indonesia BDARU' }}. All rights reserved.
+                            © 2024 BDARU {{ props.museumSettings?.museum_name || 'Museum Digital Balai Adat Rajo Penghulu BDARU' }}. All rights reserved.
                         </p>
                         <div class="flex items-center space-x-6 mt-4 md:mt-0">
                             <Link href="/privacy" class="text-gray-400 hover:text-emerald-400 text-sm transition-colors duration-300">

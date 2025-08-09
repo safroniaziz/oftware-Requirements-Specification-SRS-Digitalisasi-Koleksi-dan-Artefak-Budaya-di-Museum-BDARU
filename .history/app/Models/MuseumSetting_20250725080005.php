@@ -39,7 +39,7 @@ class MuseumSetting extends Model
     public static function getSettings()
     {
         return static::first() ?? static::create([
-            'museum_name' => 'Museum Digital Indonesia BDARU',
+            'museum_name' => 'Museum Digital Balai Adat Rajo Penghulu BDARU',
             'address' => 'Jl. Museum Nasional No. 1',
             'city' => 'Jakarta Pusat',
             'province' => 'DKI Jakarta',
@@ -62,7 +62,7 @@ class MuseumSetting extends Model
                 'saturday' => '09:00 - 15:00',
                 'sunday' => 'Tutup'
             ]),
-            'description' => 'Museum Digital Indonesia yang berkomitmen melestarikan dan memperkenalkan warisan budaya Indonesia melalui teknologi digital yang inovatif.'
+            'description' => 'Museum Digital Balai Adat Rajo Penghulu yang berkomitmen melestarikan dan memperkenalkan warisan budaya Indonesia melalui teknologi digital yang inovatif.'
         ]);
     }
 }

@@ -190,7 +190,7 @@ onMounted(() => {
 </script>
 
 <template>
-    <Head title="Koleksi Budaya - BDARU Museum Digital Indonesia" />
+    <Head title="Koleksi Budaya - BDARU Museum Digital Balai Adat Rajo Penghulu" />
 
     <!-- Hero Section -->
     <section class="relative py-20 lg:py-32 bg-gradient-to-br from-emerald-900 via-teal-800 to-cyan-900 overflow-hidden">
@@ -206,7 +206,7 @@ onMounted(() => {
                 <!-- Badge -->
                 <div class="inline-flex items-center px-6 py-3 bg-white/10 backdrop-blur-md text-white rounded-full border border-white/20 mb-8 group hover:bg-white/20 transition-all duration-300">
                     <div class="w-2 h-2 bg-emerald-400 rounded-full mr-3 animate-pulse"></div>
-                    <span class="text-sm font-bold">🏛️ Museum Digital Indonesia</span>
+                    <span class="text-sm font-bold">🏛️ Museum Digital Balai Adat Rajo Penghulu</span>
                 </div>
 
                 <!-- Main Heading -->

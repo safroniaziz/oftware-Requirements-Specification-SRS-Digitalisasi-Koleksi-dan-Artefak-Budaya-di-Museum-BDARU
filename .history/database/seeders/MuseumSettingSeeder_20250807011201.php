@@ -17,7 +17,7 @@ class MuseumSettingSeeder extends Seeder
         MuseumSetting::updateOrCreate(
             ['id' => 1],
             [
-                'museum_name' => 'Museum Digital Indonesia BDARU',
+                'museum_name' => 'Museum Digital Balai Adat Rajo Penghulu BDARU',
                 'address' => 'Jl. Pariwisata, Malabero, Kec. Tlk. Segara, Kota Bengkulu, Bengkulu, Indonesia',
                 'city' => 'Kota Bengkulu',
                 'province' => 'Bengkulu',
@@ -30,7 +30,7 @@ class MuseumSettingSeeder extends Seeder
                 'email_info' => 'balaiadatrajopenghulu@gmail.com',
                 'website' => 'https://bdaru-museum.id',
                 'opening_hours' => 'Senin - Jumat: 08:00 - 17:00, Sabtu - Minggu: 09:00 - 18:00',
-                'description' => 'Museum Digital Indonesia BDARU adalah museum modern yang menghadirkan kekayaan budaya Indonesia dalam format digital yang interaktif dan edukatif.',
+                'description' => 'Museum Digital Balai Adat Rajo Penghulu BDARU adalah museum modern yang menghadirkan kekayaan budaya Indonesia dalam format digital yang interaktif dan edukatif.',
             ]
         );
     }

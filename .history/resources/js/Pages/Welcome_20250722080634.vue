@@ -411,7 +411,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-    <Head title="BDARU - Museum Digital Indonesia" />
+    <Head title="BDARU - Museum Digital Balai Adat Rajo Penghulu" />
 
     <div class="min-h-screen bg-gray-50">
                                         <!-- Modern Fixed Navigation Bar -->
@@ -453,7 +453,7 @@ onUnmounted(() => {
                                         BDARU
                                     </h1>
                                     <p class="text-xs text-gray-300 font-medium tracking-wider uppercase opacity-80 group-hover:opacity-100 transition-opacity duration-300">
-                                        Museum Digital Indonesia
+                                        Museum Digital Balai Adat Rajo Penghulu
                                     </p>
                                 </div>
                             </div>
@@ -606,7 +606,7 @@ onUnmounted(() => {
                         <!-- Badge -->
                         <div class="inline-flex items-center px-4 py-2 bg-white/10 backdrop-blur-md rounded-full border border-white/20 mb-8 group hover:bg-white/20 transition-all duration-300 animate-fade-in-up">
                             <div class="w-2 h-2 bg-emerald-400 rounded-full mr-3 animate-pulse"></div>
-                            <span class="text-sm font-medium text-white">Museum Digital Indonesia</span>
+                            <span class="text-sm font-medium text-white">Museum Digital Balai Adat Rajo Penghulu</span>
                         </div>
 
                         <!-- Main Heading -->

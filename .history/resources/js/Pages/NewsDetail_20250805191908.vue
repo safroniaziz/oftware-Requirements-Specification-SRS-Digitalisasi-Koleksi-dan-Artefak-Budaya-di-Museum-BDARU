@@ -1,5 +1,5 @@
 <template>
-    <Head :title="`${props.news?.title || 'Berita'} - ${props.museumSettings?.museum_name || 'BDARU Museum Digital Indonesia'}`" />
+    <Head :title="`${props.news?.title || 'Berita'} - ${props.museumSettings?.museum_name || 'BDARU Museum Digital Balai Adat Rajo Penghulu'}`" />
 
     <div class="min-h-screen bg-gray-50">
 
@@ -81,7 +81,7 @@
                                         BDARU
                                     </h1>
                                     <p class="text-xs text-gray-700 font-semibold tracking-wider uppercase opacity-90 group-hover:opacity-100 transition-opacity duration-300">
-                                        {{ props.museumSettings?.museum_name || 'Museum Digital Indonesia BDARU' }}
+                                        {{ props.museumSettings?.museum_name || 'Museum Digital Balai Adat Rajo Penghulu BDARU' }}
                                     </p>
                                 </div>
                             </div>

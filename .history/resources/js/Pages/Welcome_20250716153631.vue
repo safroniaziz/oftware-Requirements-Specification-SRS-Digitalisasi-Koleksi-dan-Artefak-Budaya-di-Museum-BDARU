@@ -106,7 +106,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-    <Head title="BDARU - Museum Digital Indonesia" />
+    <Head title="BDARU - Museum Digital Balai Adat Rajo Penghulu" />
 
     <div class="min-h-screen bg-gray-50">
                                         <!-- Fixed Logo Bar -->
@@ -271,7 +271,7 @@ onUnmounted(() => {
                     <div class="w-full lg:w-1/2 text-white pr-0 lg:pr-12">
                         <div class="mb-8">
                             <div class="inline-flex items-center px-4 py-2 bg-white/20 rounded-full border border-white/30 mb-6">
-                                <span class="text-sm font-medium text-white">🏛️ Museum Digital Indonesia</span>
+                                <span class="text-sm font-medium text-white">🏛️ Museum Digital Balai Adat Rajo Penghulu</span>
                             </div>
                         </div>
 

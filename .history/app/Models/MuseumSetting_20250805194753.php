@@ -38,7 +38,7 @@ class MuseumSetting extends Model
     public static function getSettings()
     {
         return static::first() ?? static::create([
-            'museum_name' => 'Museum Digital Indonesia BDARU',
+            'museum_name' => 'Museum Digital Balai Adat Rajo Penghulu BDARU',
             'address' => 'Jl. Museum Nasional No. 1, Gambir',
             'city' => 'Jakarta Pusat',
             'province' => 'DKI Jakarta',
@@ -51,7 +51,7 @@ class MuseumSetting extends Model
             'email_info' => 'info@bdaru-museum.id',
             'website' => 'https://bdaru-museum.id',
             'opening_hours' => 'Senin - Jumat: 08:00 - 17:00, Sabtu - Minggu: 09:00 - 18:00',
-            'description' => 'Museum Digital Indonesia BDARU adalah museum modern yang menghadirkan kekayaan budaya Indonesia dalam format digital yang interaktif dan edukatif.'
+            'description' => 'Museum Digital Balai Adat Rajo Penghulu BDARU adalah museum modern yang menghadirkan kekayaan budaya Indonesia dalam format digital yang interaktif dan edukatif.'
         ]);
     }
 

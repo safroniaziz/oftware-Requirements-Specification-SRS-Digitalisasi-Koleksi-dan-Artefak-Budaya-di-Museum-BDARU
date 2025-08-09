@@ -2,15 +2,15 @@
 <html lang="en">
 	<!--begin::Head-->
 	<head>
-		<title>BDARU - Museum Digital Indonesia</title>
+		<title>BDARU - Museum Digital Balai Adat Rajo Penghulu</title>
 		<meta charset="utf-8" />
         <meta name="csrf-token" content="{{ csrf_token() }}">
-		<meta name="description" content="Dashboard BDARU Museum Digital Indonesia - Sistem manajemen museum digital terpadu" />
+		<meta name="description" content="Dashboard BDARU Museum Digital Balai Adat Rajo Penghulu - Sistem manajemen museum digital terpadu" />
 		<meta name="keywords" content="museum, digital, bdaru, dashboard, admin, pengelola" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta property="og:locale" content="en_US" />
 		<meta property="og:type" content="article" />
-		<meta property="og:title" content="BDARU - Museum Digital Indonesia" />
+		<meta property="og:title" content="BDARU - Museum Digital Balai Adat Rajo Penghulu" />
 		<meta property="og:url" content="{{ url('/') }}" />
 		<meta property="og:site_name" content="BDARU Museum" />
 		@include('layouts.dashboard.css')

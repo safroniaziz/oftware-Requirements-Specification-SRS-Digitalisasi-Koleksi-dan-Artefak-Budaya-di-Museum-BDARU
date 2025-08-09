@@ -1,5 +1,5 @@
 <template>
-    <Head :title="`${props.news?.title || 'Berita'} - ${props.museumSettings?.museum_name || 'BDARU Museum Digital Indonesia'}`" />
+    <Head :title="`${props.news?.title || 'Berita'} - ${props.museumSettings?.museum_name || 'BDARU Museum Digital Balai Adat Rajo Penghulu'}`" />
 
     <div class="min-h-screen bg-gray-50">
 
@@ -81,7 +81,7 @@
                                         BDARU
                                     </h1>
                                     <p class="text-xs text-gray-700 font-semibold tracking-wider uppercase opacity-90 group-hover:opacity-100 transition-opacity duration-300">
-                                        {{ props.museumSettings?.museum_name || 'Museum Digital Indonesia BDARU' }}
+                                        {{ props.museumSettings?.museum_name || 'Museum Digital Balai Adat Rajo Penghulu BDARU' }}
                                     </p>
                                 </div>
                             </div>
@@ -233,7 +233,7 @@
 
                         <!-- Enhanced Subtitle -->
                         <p class="text-lg md:text-xl mb-8 leading-relaxed text-gray-700 font-medium max-w-2xl mx-auto lg:mx-0">
-                            {{ props.news?.excerpt || 'Temukan detail lengkap tentang berita ini. Dapatkan informasi terkini tentang kegiatan, pengumuman, dan perkembangan Museum Digital Indonesia BDARU.' }}
+                            {{ props.news?.excerpt || 'Temukan detail lengkap tentang berita ini. Dapatkan informasi terkini tentang kegiatan, pengumuman, dan perkembangan Museum Digital Balai Adat Rajo Penghulu BDARU.' }}
                         </p>
 
                         <!-- Enhanced CTA Buttons -->
@@ -261,7 +261,7 @@
                                     <div class="bg-gradient-to-r from-emerald-500 to-teal-500 text-white p-4 rounded-t-2xl">
                                         <div class="text-center">
                                             <h3 class="text-xl font-bold">Detail Berita</h3>
-                                            <p class="text-sm opacity-90">Museum Digital Indonesia</p>
+                                            <p class="text-sm opacity-90">Museum Digital Balai Adat Rajo Penghulu</p>
                                         </div>
                                     </div>
 

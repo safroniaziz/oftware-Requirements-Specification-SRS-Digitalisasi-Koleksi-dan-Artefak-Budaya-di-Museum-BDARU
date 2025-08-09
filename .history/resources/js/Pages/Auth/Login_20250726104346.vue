@@ -104,7 +104,7 @@ onMounted(() => {
                             BDARU
                         </span>
                     </h1>
-                    <p class="text-emerald-100 text-lg font-medium">Museum Digital Indonesia</p>
+                    <p class="text-emerald-100 text-lg font-medium">Museum Digital Balai Adat Rajo Penghulu</p>
                     <p class="text-emerald-200/80 text-sm mt-2">Jelajahi kekayaan budaya Indonesia</p>
                 </div>
 

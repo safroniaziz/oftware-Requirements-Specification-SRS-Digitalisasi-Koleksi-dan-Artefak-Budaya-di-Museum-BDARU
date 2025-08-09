@@ -64,7 +64,7 @@ onMounted(() => {
 </script>
 
 <template>
-    <Head :title="`${collection.title} - BDARU Museum Digital Indonesia`" />
+    <Head :title="`${collection.title} - BDARU Museum Digital Balai Adat Rajo Penghulu`" />
 
     <!-- Hero Section -->
     <section class="relative py-20 lg:py-32 bg-gradient-to-br from-emerald-900 via-teal-800 to-cyan-900 overflow-hidden">

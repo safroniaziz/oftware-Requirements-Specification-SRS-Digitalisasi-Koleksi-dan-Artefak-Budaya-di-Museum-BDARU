@@ -19,7 +19,7 @@
                 <div class="animate-fade-in-up">
                     <div class="mb-8">
                         <div class="inline-flex items-center px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/20 mb-6">
-                            <span class="text-sm font-medium">🏛️ Museum Digital Indonesia</span>
+                            <span class="text-sm font-medium">🏛️ Museum Digital Balai Adat Rajo Penghulu</span>
                         </div>
                     </div>
 

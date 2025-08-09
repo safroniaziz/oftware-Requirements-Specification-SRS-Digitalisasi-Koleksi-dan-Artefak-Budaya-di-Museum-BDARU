@@ -19,7 +19,7 @@ class HeroImageSeeder extends Seeder
                 'subtitle' => 'Koleksi Lukisan Klasik Indonesia',
                 'description' => 'Jelajahi keindahan seni rupa tradisional dan kontemporer yang menceritakan sejarah dan budaya Indonesia melalui karya-karya masterpiece dari berbagai era.',
                 'image_path' => null, // Admin akan upload gambar nanti
-                'alt_text' => 'Galeri Seni Rupa Museum Digital Indonesia',
+                'alt_text' => 'Galeri Seni Rupa Museum Digital Balai Adat Rajo Penghulu',
                 'is_active' => true,
             ],
             [

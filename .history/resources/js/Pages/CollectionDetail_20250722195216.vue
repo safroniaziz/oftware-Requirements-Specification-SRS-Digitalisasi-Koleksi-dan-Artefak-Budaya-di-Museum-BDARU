@@ -70,7 +70,7 @@ onMounted(() => {
 </script>
 
 <template>
-    <Head :title="`${collection.name} - BDARU Museum Digital Indonesia`" />
+    <Head :title="`${collection.name} - BDARU Museum Digital Balai Adat Rajo Penghulu`" />
 
     <!-- Modern Fixed Navigation Bar -->
     <div class="fixed top-0 left-0 right-0 bg-white/98 backdrop-blur-xl border-b border-gray-200/50 shadow-lg z-50">
@@ -112,7 +112,7 @@ onMounted(() => {
                                     BDARU
                                 </h1>
                                 <p class="text-xs text-gray-700 font-semibold tracking-wider uppercase opacity-90 group-hover:opacity-100 transition-opacity duration-300">
-                                    Museum Digital Indonesia
+                                    Museum Digital Balai Adat Rajo Penghulu
                                 </p>
                             </div>
                         </div>

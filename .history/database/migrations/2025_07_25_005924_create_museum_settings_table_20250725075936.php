@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('museum_settings', function (Blueprint $table) {
             $table->id();
-            $table->string('museum_name')->default('Museum Digital Indonesia BDARU');
+            $table->string('museum_name')->default('Museum Digital Balai Adat Rajo Penghulu BDARU');
             $table->text('address')->nullable();
             $table->string('city')->default('Jakarta Pusat');
             $table->string('province')->default('DKI Jakarta');

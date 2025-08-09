@@ -84,7 +84,7 @@ onMounted(() => {
                             BDARU
                         </span>
                     </h1>
-                    <p class="text-gray-600 font-medium">Museum Digital Indonesia</p>
+                    <p class="text-gray-600 font-medium">Museum Digital Balai Adat Rajo Penghulu</p>
                 </div>
 
                 <!-- Status Message -->

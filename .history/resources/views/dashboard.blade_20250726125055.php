@@ -50,7 +50,7 @@
                                             <h1 class="text-white fw-bold fs-2hx mb-2" style="text-shadow: 0 2px 4px rgba(0,0,0,0.3);">Selamat Datang di BDARU</h1>
                                             <div class="d-flex align-items-center">
                                                 <span class="badge fs-8 fw-bold me-2 px-3 py-2" style="background: linear-gradient(45deg, #0d9488, #0f766e); color: white; border: none;">v1.0</span>
-                                                <span class="text-white fs-7 fw-semibold" style="text-shadow: 0 1px 2px rgba(0,0,0,0.2);">Museum Digital Indonesia</span>
+                                                <span class="text-white fs-7 fw-semibold" style="text-shadow: 0 1px 2px rgba(0,0,0,0.2);">Museum Digital Balai Adat Rajo Penghulu</span>
                                             </div>
                                         </div>
                                     </div>

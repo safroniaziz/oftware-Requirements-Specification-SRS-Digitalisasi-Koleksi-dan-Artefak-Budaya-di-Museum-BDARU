@@ -56,7 +56,7 @@ onMounted(() => {
 </script>
 
 <template>
-    <Head title="Testimoni Pengunjung - BDARU Museum Digital Indonesia" />
+    <Head title="Testimoni Pengunjung - BDARU Museum Digital Balai Adat Rajo Penghulu" />
 
     <!-- Modern Fixed Navigation Bar -->
     <div class="fixed top-0 left-0 right-0 bg-white/98 backdrop-blur-xl border-b border-gray-200/50 shadow-lg z-50">
@@ -98,7 +98,7 @@ onMounted(() => {
                                     BDARU
                                 </h1>
                                 <p class="text-xs text-gray-700 font-semibold tracking-wider uppercase opacity-90 group-hover:opacity-100 transition-opacity duration-300">
-                                    Museum Digital Indonesia
+                                    Museum Digital Balai Adat Rajo Penghulu
                                 </p>
                             </div>
                         </div>
@@ -407,7 +407,7 @@ onMounted(() => {
                         required
                         rows="4"
                         class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all duration-300"
-                        placeholder="Bagikan pengalaman Anda tentang BDARU Museum Digital Indonesia"
+                        placeholder="Bagikan pengalaman Anda tentang BDARU Museum Digital Balai Adat Rajo Penghulu"
                     ></textarea>
                 </div>
 
@@ -526,7 +526,7 @@ onMounted(() => {
                                         BDARU
                                     </h2>
                                     <p class="text-sm text-gray-300 font-semibold tracking-wider uppercase opacity-90 group-hover:opacity-100 transition-opacity duration-300">
-                                        Museum Digital Indonesia
+                                        Museum Digital Balai Adat Rajo Penghulu
                                     </p>
                                 </div>
                             </div>
@@ -633,7 +633,7 @@ onMounted(() => {
             <div class="border-t border-gray-800 pt-8 mt-12">
                 <div class="flex flex-col md:flex-row justify-between items-center">
                     <p class="text-gray-400 text-sm mb-4 md:mb-0">
-                        © 2024 BDARU Museum Digital Indonesia. Semua hak dilindungi.
+                        © 2024 BDARU Museum Digital Balai Adat Rajo Penghulu. Semua hak dilindungi.
                     </p>
                     <div class="flex items-center space-x-6">
                         <Link href="/about" class="text-gray-400 hover:text-emerald-400 transition-colors duration-300 text-sm">

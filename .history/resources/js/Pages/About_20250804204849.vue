@@ -79,7 +79,7 @@
                                     BDARU
                                 </h1>
                                 <p class="text-xs text-gray-700 font-semibold tracking-wider uppercase opacity-90 group-hover:opacity-100 transition-opacity duration-300">
-                                    {{ props.museumSettings?.museum_name || 'Museum Digital Indonesia BDARU' }}
+                                    {{ props.museumSettings?.museum_name || 'Museum Digital Balai Adat Rajo Penghulu BDARU' }}
                                 </p>
                             </div>
                         </div>
@@ -483,7 +483,7 @@
                 <!-- Badge -->
                 <div class="inline-flex items-center px-6 py-3 bg-white/10 backdrop-blur-md text-white rounded-full border border-white/20 mb-8 group hover:bg-white/20 transition-all duration-300" data-aos="fade-down" data-aos-delay="200">
                     <div class="w-2 h-2 bg-emerald-400 rounded-full mr-3 animate-pulse"></div>
-                    <span class="text-sm font-bold">🏛️ {{ props.museumSettings?.museum_name || 'Museum Digital Indonesia BDARU' }}</span>
+                    <span class="text-sm font-bold">🏛️ {{ props.museumSettings?.museum_name || 'Museum Digital Balai Adat Rajo Penghulu BDARU' }}</span>
                 </div>
 
                 <!-- Main Heading -->
@@ -493,7 +493,7 @@
 
                 <!-- Subtitle -->
                 <p class="text-xl md:text-2xl text-emerald-100 mb-12 max-w-4xl mx-auto leading-relaxed" data-aos="fade-up" data-aos-delay="600">
-                    {{ props.museumSettings?.description || 'Museum Digital Indonesia yang berkomitmen melestarikan dan memperkenalkan warisan budaya Indonesia melalui teknologi digital yang inovatif.' }}
+                    {{ props.museumSettings?.description || 'Museum Digital Balai Adat Rajo Penghulu yang berkomitmen melestarikan dan memperkenalkan warisan budaya Indonesia melalui teknologi digital yang inovatif.' }}
                     <br>
                     <span class="text-lg text-emerald-200">Menghubungkan masa lalu dengan masa depan melalui teknologi.</span>
                 </p>
@@ -528,7 +528,7 @@
                             Tentang <span class="text-emerald-600">BDARU</span>
                         </h2>
                         <p class="text-lg sm:text-xl text-gray-600 leading-relaxed mb-6 lg:mb-8" data-aos="fade-up" data-aos-delay="200">
-                            Museum Digital Indonesia BDARU adalah platform inovatif yang menggabungkan teknologi modern dengan warisan budaya Indonesia untuk melestarikan dan memperkenalkan kekayaan budaya kepada dunia.
+                            Museum Digital Balai Adat Rajo Penghulu BDARU adalah platform inovatif yang menggabungkan teknologi modern dengan warisan budaya Indonesia untuk melestarikan dan memperkenalkan kekayaan budaya kepada dunia.
                         </p>
                     </div>
 
@@ -614,7 +614,7 @@
                         >
                         <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
                         <div class="absolute bottom-6 left-6 right-6">
-                            <h3 class="text-white text-xl lg:text-2xl font-bold mb-2">Museum Digital Indonesia</h3>
+                            <h3 class="text-white text-xl lg:text-2xl font-bold mb-2">Museum Digital Balai Adat Rajo Penghulu</h3>
                             <p class="text-white/90 text-sm lg:text-base">Melestarikan budaya melalui teknologi modern</p>
                         </div>
                     </div>
@@ -739,7 +739,7 @@
                                 <span class="text-white font-black text-4xl">B</span>
                             </div>
                             <h3 class="text-2xl font-bold text-gray-900 mb-4">BDARU</h3>
-                            <p class="text-gray-600 mb-6">{{ props.museumSettings?.museum_name || 'Museum Digital Indonesia BDARU' }}</p>
+                            <p class="text-gray-600 mb-6">{{ props.museumSettings?.museum_name || 'Museum Digital Balai Adat Rajo Penghulu BDARU' }}</p>
                             <div class="grid grid-cols-2 gap-4 text-sm">
                                 <div class="bg-white rounded-xl p-3">
                                     <div class="font-bold text-emerald-600">{{ props.collections?.total || 0 }}+</div>
@@ -947,7 +947,7 @@
                                         BDARU
                                     </h1>
                                     <p class="text-sm text-gray-300 font-semibold tracking-wider uppercase opacity-90 group-hover:opacity-100 transition-opacity duration-300">
-                                        {{ props.museumSettings?.museum_name || 'Museum Digital Indonesia BDARU' }}
+                                        {{ props.museumSettings?.museum_name || 'Museum Digital Balai Adat Rajo Penghulu BDARU' }}
                                     </p>
                                 </div>
                             </div>
@@ -1059,7 +1059,7 @@
             <div class="border-t border-gray-800 mt-12 pt-8">
                 <div class="flex flex-col md:flex-row justify-between items-center">
                     <p class="text-gray-400 text-sm text-center md:text-left">
-                        © 2024 BDARU {{ props.museumSettings?.museum_name || 'Museum Digital Indonesia BDARU' }}. All rights reserved.
+                        © 2024 BDARU {{ props.museumSettings?.museum_name || 'Museum Digital Balai Adat Rajo Penghulu BDARU' }}. All rights reserved.
                     </p>
                     <div class="flex items-center space-x-6 mt-4 md:mt-0">
                         <Link href="/privacy" class="text-gray-400 hover:text-emerald-400 text-sm transition-colors duration-300">

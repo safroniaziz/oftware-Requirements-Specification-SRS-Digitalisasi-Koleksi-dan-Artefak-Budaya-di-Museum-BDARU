@@ -99,7 +99,7 @@ onMounted(async () => {
                             BDARU
                         </span>
                     </h1>
-                    <p class="text-emerald-100 text-xl font-medium mb-2">Museum Digital Indonesia</p>
+                    <p class="text-emerald-100 text-xl font-medium mb-2">Museum Digital Balai Adat Rajo Penghulu</p>
                     <p class="text-emerald-200/80 text-base">Mulai perjalanan budaya digital Anda dan akses koleksi eksklusif</p>
                 </div>
 

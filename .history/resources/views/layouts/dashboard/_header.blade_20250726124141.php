@@ -20,7 +20,7 @@
                 <span class="menu-link">
                     <span class="menu-title text-primary fw-bold">
                         <i class="fas fa-museum me-2"></i>
-                        BDARU - Museum Digital Indonesia
+                        BDARU - Museum Digital Balai Adat Rajo Penghulu
                     </span>
                 </span>
                 <!--end:Menu link-->

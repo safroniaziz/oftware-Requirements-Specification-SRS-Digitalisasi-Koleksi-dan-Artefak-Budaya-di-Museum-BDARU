@@ -1,5 +1,5 @@
 <template>
-    <Head :title="`${news.title} - BDARU Museum Digital Indonesia`" />
+    <Head :title="`${news.title} - BDARU Museum Digital Balai Adat Rajo Penghulu`" />
 
     <!-- Modern Fixed Navigation Bar -->
     <div class="fixed top-0 left-0 right-0 bg-white/98 backdrop-blur-xl border-b border-gray-200/50 shadow-lg z-50">
@@ -41,7 +41,7 @@
                                     BDARU
                                 </h1>
                                 <p class="text-xs text-gray-700 font-semibold tracking-wider uppercase opacity-90 group-hover:opacity-100 transition-opacity duration-300">
-                                    Museum Digital Indonesia
+                                    Museum Digital Balai Adat Rajo Penghulu
                                 </p>
                             </div>
                         </div>
@@ -548,7 +548,7 @@
                     <!-- Back to News -->
                     <div class="bg-gradient-to-br from-emerald-50 to-teal-50 rounded-2xl p-6 border border-emerald-100">
                         <h3 class="text-lg font-bold text-gray-900 mb-4">Kembali ke Berita</h3>
-                        <p class="text-gray-600 text-sm mb-4">Jelajahi berita terbaru lainnya dari museum digital Indonesia.</p>
+                        <p class="text-gray-600 text-sm mb-4">Jelajahi berita terbaru lainnya dari Museum Digital Balai Adat Rajo Penghulu.</p>
                         <Link
                             href="/news"
                             class="inline-flex items-center px-4 py-2 bg-emerald-600 text-white rounded-lg font-medium hover:bg-emerald-700 transition-colors duration-200"
@@ -576,7 +576,7 @@
                         </div>
                         <div>
                             <h3 class="text-2xl font-bold">BDARU</h3>
-                            <p class="text-emerald-400 text-sm">Museum Digital Indonesia</p>
+                            <p class="text-emerald-400 text-sm">Museum Digital Balai Adat Rajo Penghulu</p>
                         </div>
                     </div>
                     <p class="text-gray-300 leading-relaxed mb-6 max-w-md">
@@ -685,7 +685,7 @@
             <div class="border-t border-gray-800 mt-12 pt-8">
                 <div class="flex flex-col md:flex-row justify-between items-center">
                     <p class="text-gray-400 text-sm text-center md:text-left">
-                        © 2024 BDARU Museum Digital Indonesia. All rights reserved.
+                        © 2024 BDARU Museum Digital Balai Adat Rajo Penghulu. All rights reserved.
                     </p>
                     <div class="flex items-center space-x-6 mt-4 md:mt-0">
                         <Link href="/privacy" class="text-gray-400 hover:text-emerald-400 text-sm transition-colors duration-300">

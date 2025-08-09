@@ -368,7 +368,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-    <Head :title="`BDARU - ${props.museumSettings?.museum_name || 'Museum Digital Indonesia BDARU'}`" />
+    <Head :title="`BDARU - ${props.museumSettings?.museum_name || 'Museum Digital Balai Adat Rajo Penghulu BDARU'}`" />
 
     <!-- Browser Loading Overlay -->
     <div v-if="browserLoading" class="fixed inset-0 bg-gradient-to-br from-emerald-900 via-teal-800 to-cyan-900 z-[9999] flex items-center justify-center">
@@ -389,7 +389,7 @@ onUnmounted(() => {
 
             <!-- Loading Text -->
             <h1 class="text-3xl font-black text-white mt-4 mb-2">BDARU</h1>
-            <p class="text-sm text-emerald-200">{{ props.museumSettings?.museum_name || 'Museum Digital Indonesia BDARU' }}</p>
+            <p class="text-sm text-emerald-200">{{ props.museumSettings?.museum_name || 'Museum Digital Balai Adat Rajo Penghulu BDARU' }}</p>
 
             <!-- Loading Animation -->
             <div class="flex justify-center space-x-1 mt-4">
@@ -475,7 +475,7 @@ onUnmounted(() => {
                                         BDARU
                                     </h1>
                                     <p class="text-xs text-gray-700 font-semibold tracking-wider uppercase opacity-90 group-hover:opacity-100 transition-opacity duration-300">
-                                        {{ props.museumSettings?.museum_name || 'Museum Digital Indonesia BDARU' }}
+                                        {{ props.museumSettings?.museum_name || 'Museum Digital Balai Adat Rajo Penghulu BDARU' }}
                                     </p>
                                 </div>
                             </div>
@@ -892,7 +892,7 @@ onUnmounted(() => {
                         <!-- Enhanced Badge -->
                         <div class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-emerald-100 to-teal-100 text-emerald-800 rounded-full border-2 border-emerald-200 mb-6 group hover:bg-gradient-to-r hover:from-emerald-200 hover:to-teal-200 transition-all duration-300 shadow-lg">
                             <div class="w-2 h-2 bg-emerald-500 rounded-full mr-2 animate-pulse"></div>
-                            <span class="text-sm font-bold">🏛️ {{ props.museumSettings?.museum_name || 'Museum Digital Indonesia BDARU' }}</span>
+                            <span class="text-sm font-bold">🏛️ {{ props.museumSettings?.museum_name || 'Museum Digital Balai Adat Rajo Penghulu BDARU' }}</span>
                         </div>
 
                         <!-- Enhanced Main Heading -->
@@ -1021,7 +1021,7 @@ onUnmounted(() => {
                                                 <svg class="w-24 h-24 text-emerald-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                                                 </svg>
-                                                <p class="text-emerald-600 text-lg font-medium">Museum Digital Indonesia</p>
+                                                <p class="text-emerald-600 text-lg font-medium">Museum Digital Balai Adat Rajo Penghulu</p>
                                                 <p class="text-emerald-500 text-sm mt-2">Jelajahi kekayaan budaya Indonesia</p>
                                                 <p class="text-emerald-400 text-xs mt-1">Admin akan upload gambar slider nanti</p>
                                             </div>
@@ -1032,7 +1032,7 @@ onUnmounted(() => {
                                         <div class="absolute bottom-4 left-4 right-4 z-10">
                                             <div class="bg-white/95 backdrop-blur-md rounded-xl p-4 border-2 border-emerald-200 transform transition-all duration-500 hover:bg-white shadow-xl">
                                                 <h3 class="text-gray-900 font-bold text-lg mb-1">BDARU</h3>
-                                                <p class="text-gray-700 text-sm mb-1">Museum Digital Indonesia</p>
+                                                <p class="text-gray-700 text-sm mb-1">Museum Digital Balai Adat Rajo Penghulu</p>
                                                 <p class="text-gray-600 text-xs">Jelajahi kekayaan budaya Indonesia melalui teknologi digital yang inovatif</p>
                                             </div>
                                         </div>
@@ -1521,7 +1521,7 @@ onUnmounted(() => {
                                             BDARU
                                         </h1>
                                         <p class="text-sm text-gray-300 font-semibold tracking-wider uppercase opacity-90 group-hover:opacity-100 transition-opacity duration-300">
-                                            Museum Digital Indonesia
+                                            Museum Digital Balai Adat Rajo Penghulu
                                         </p>
                                     </div>
                                 </div>
@@ -1633,7 +1633,7 @@ onUnmounted(() => {
                 <div class="border-t border-gray-800 mt-12 pt-8">
                     <div class="flex flex-col md:flex-row justify-between items-center">
                         <p class="text-gray-400 text-sm text-center md:text-left">
-                            © 2024 BDARU {{ props.museumSettings?.museum_name || 'Museum Digital Indonesia BDARU' }}. All rights reserved.
+                            © 2024 BDARU {{ props.museumSettings?.museum_name || 'Museum Digital Balai Adat Rajo Penghulu BDARU' }}. All rights reserved.
                         </p>
                         <div class="flex items-center space-x-6 mt-4 md:mt-0">
                             <Link href="/privacy" class="text-gray-400 hover:text-emerald-400 text-sm transition-colors duration-300">

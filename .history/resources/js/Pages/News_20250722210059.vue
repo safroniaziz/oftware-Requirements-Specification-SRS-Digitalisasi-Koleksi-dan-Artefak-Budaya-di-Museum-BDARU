@@ -1,5 +1,5 @@
 <template>
-    <Head title="Berita Terbaru - BDARU Museum Digital Indonesia" />
+    <Head title="Berita Terbaru - BDARU Museum Digital Balai Adat Rajo Penghulu" />
 
     <div class="min-h-screen bg-gray-50">
 
@@ -43,7 +43,7 @@
                                     BDARU
                                 </h1>
                                 <p class="text-xs text-gray-700 font-semibold tracking-wider uppercase opacity-90 group-hover:opacity-100 transition-opacity duration-300">
-                                    Museum Digital Indonesia
+                                    Museum Digital Balai Adat Rajo Penghulu
                                 </p>
                             </div>
                         </div>
@@ -164,7 +164,7 @@
                     Berita <span class="text-emerald-600">Museum</span> Digital
                 </h1>
                 <p class="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed mb-6">
-                    Temukan berita terbaru seputar koleksi, pameran, dan perkembangan museum digital Indonesia
+                    Temukan berita terbaru seputar koleksi, pameran, dan perkembangan Museum Digital Balai Adat Rajo Penghulu
                 </p>
 
                 <!-- Search Bar -->
@@ -445,7 +445,7 @@
                                         BDARU
                                     </h1>
                                     <p class="text-sm text-gray-300 font-semibold tracking-wider uppercase opacity-90 group-hover:opacity-100 transition-opacity duration-300">
-                                        Museum Digital Indonesia
+                                        Museum Digital Balai Adat Rajo Penghulu
                                     </p>
                                 </div>
                             </div>
@@ -557,7 +557,7 @@
             <div class="border-t border-gray-800 mt-12 pt-8">
                 <div class="flex flex-col md:flex-row justify-between items-center">
                     <p class="text-gray-400 text-sm text-center md:text-left">
-                        © 2024 BDARU Museum Digital Indonesia. All rights reserved.
+                        © 2024 BDARU Museum Digital Balai Adat Rajo Penghulu. All rights reserved.
                     </p>
                     <div class="flex items-center space-x-6 mt-4 md:mt-0">
                         <Link href="/privacy" class="text-gray-400 hover:text-emerald-400 text-sm transition-colors duration-300">

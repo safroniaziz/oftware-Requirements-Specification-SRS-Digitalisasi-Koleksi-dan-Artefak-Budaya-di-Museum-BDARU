@@ -6,7 +6,7 @@
     <div class="card mb-4">
         <div class="card-body text-center py-5">
             <h2 class="card-title mb-3">Selamat Datang di BDARU</h2>
-            <p class="card-text text-muted">Sistem Manajemen Museum Digital Indonesia</p>
+            <p class="card-text text-muted">Sistem Manajemen Museum Digital Balai Adat Rajo Penghulu</p>
         </div>
     </div>
 

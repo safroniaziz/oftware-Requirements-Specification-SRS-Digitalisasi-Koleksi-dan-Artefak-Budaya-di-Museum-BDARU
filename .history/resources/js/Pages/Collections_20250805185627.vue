@@ -413,7 +413,7 @@ onMounted(() => {
 </script>
 
 <template>
-    <Head :title="`Koleksi - ${props.museumSettings?.museum_name || 'BDARU Museum Digital Indonesia'}`" />
+    <Head :title="`Koleksi - ${props.museumSettings?.museum_name || 'BDARU Museum Digital Balai Adat Rajo Penghulu'}`" />
 
     <div class="min-h-screen bg-gray-50">
 
@@ -495,7 +495,7 @@ onMounted(() => {
                                         BDARU
                                     </h1>
                                     <p class="text-xs text-gray-700 font-semibold tracking-wider uppercase opacity-90 group-hover:opacity-100 transition-opacity duration-300">
-                                        {{ props.museumSettings?.museum_name || 'Museum Digital Indonesia BDARU' }}
+                                        {{ props.museumSettings?.museum_name || 'Museum Digital Balai Adat Rajo Penghulu BDARU' }}
                                     </p>
                                 </div>
                             </div>
@@ -809,7 +809,7 @@ onMounted(() => {
                     <!-- Badge -->
                     <div class="inline-flex items-center px-6 py-3 bg-white/10 backdrop-blur-md text-white rounded-full border border-white/20 mb-8 group hover:bg-white/20 transition-all duration-300" data-aos="fade-down" data-aos-delay="200">
                         <div class="w-2 h-2 bg-emerald-400 rounded-full mr-3 animate-pulse"></div>
-                                                <span class="text-sm font-bold">🏛️ {{ props.museumSettings?.museum_name || 'Museum Digital Indonesia BDARU' }}</span>
+                                                <span class="text-sm font-bold">🏛️ {{ props.museumSettings?.museum_name || 'Museum Digital Balai Adat Rajo Penghulu BDARU' }}</span>
                     </div>
 
                     <!-- Main Heading -->
@@ -1412,7 +1412,7 @@ onMounted(() => {
                                             BDARU
                                         </h1>
                                         <p class="text-xs text-gray-700 font-semibold tracking-wider uppercase opacity-90 group-hover:opacity-100 transition-opacity duration-300 overflow-hidden">
-                                            {{ props.museumSettings?.museum_name || 'Museum Digital Indonesia BDARU' }}
+                                            {{ props.museumSettings?.museum_name || 'Museum Digital Balai Adat Rajo Penghulu BDARU' }}
                                         </p>
                                     </div>
                                 </div>
@@ -1524,7 +1524,7 @@ onMounted(() => {
                 <div class="border-t border-gray-800 mt-12 pt-8">
                     <div class="flex flex-col md:flex-row justify-between items-center">
                         <p class="text-gray-400 text-sm text-center md:text-left">
-                            © 2024 BDARU {{ props.museumSettings?.museum_name || 'Museum Digital Indonesia BDARU' }}. All rights reserved.
+                            © 2024 BDARU {{ props.museumSettings?.museum_name || 'Museum Digital Balai Adat Rajo Penghulu BDARU' }}. All rights reserved.
                         </p>
                         <div class="flex items-center space-x-6 mt-4 md:mt-0">
                             <Link href="/privacy" class="text-gray-400 hover:text-emerald-400 text-sm transition-colors duration-300">

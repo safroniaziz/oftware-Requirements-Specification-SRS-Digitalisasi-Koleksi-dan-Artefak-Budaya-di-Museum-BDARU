@@ -42,7 +42,7 @@
                                         BDARU
                                     </h1>
                                     <p class="text-xs text-gray-700 font-semibold tracking-wider uppercase opacity-90 group-hover:opacity-100 transition-opacity duration-300">
-                                        Museum Digital Indonesia
+                                        Museum Digital Balai Adat Rajo Penghulu
                                     </p>
                                 </Link>
                             </div>
@@ -214,7 +214,7 @@
                     Hubungi Kami
                 </h1>
                 <p class="text-xl text-emerald-100 mb-8 max-w-3xl mx-auto animate-fade-in-delay">
-                    Kami siap membantu Anda. Silakan hubungi tim kami untuk pertanyaan, saran, atau kolaborasi terkait museum digital Indonesia.
+                    Kami siap membantu Anda. Silakan hubungi tim kami untuk pertanyaan, saran, atau kolaborasi terkait Museum Digital Balai Adat Rajo Penghulu.
                 </p>
 
                 <!-- Interactive Stats -->
@@ -431,7 +431,7 @@
             <div class="text-center mb-12">
                 <h2 class="text-3xl font-bold text-gray-900 mb-4">Lokasi Kami</h2>
                 <p class="text-gray-600 max-w-2xl mx-auto">
-                    Museum Digital Indonesia BDARU berlokasi strategis di pusat Jakarta, mudah dijangkau dari berbagai arah.
+                    Museum Digital Balai Adat Rajo Penghulu BDARU berlokasi strategis di pusat Jakarta, mudah dijangkau dari berbagai arah.
                 </p>
             </div>
             <div class="bg-white rounded-3xl shadow-xl overflow-hidden">
@@ -493,7 +493,7 @@
                                         BDARU
                                     </h1>
                                     <p class="text-sm text-gray-300 font-semibold tracking-wider uppercase opacity-90 group-hover:opacity-100 transition-opacity duration-300">
-                                        Museum Digital Indonesia
+                                        Museum Digital Balai Adat Rajo Penghulu
                                     </p>
                                 </div>
                             </div>
@@ -605,7 +605,7 @@
             <div class="border-t border-gray-800 mt-12 pt-8">
                 <div class="flex flex-col md:flex-row justify-between items-center">
                     <p class="text-gray-400 text-sm text-center md:text-left">
-                        © 2024 BDARU Museum Digital Indonesia. All rights reserved.
+                        © 2024 BDARU Museum Digital Balai Adat Rajo Penghulu. All rights reserved.
                     </p>
                     <div class="flex items-center space-x-6 mt-4 md:mt-0">
                         <Link href="/privacy" class="text-gray-400 hover:text-emerald-400 text-sm transition-colors duration-300">
