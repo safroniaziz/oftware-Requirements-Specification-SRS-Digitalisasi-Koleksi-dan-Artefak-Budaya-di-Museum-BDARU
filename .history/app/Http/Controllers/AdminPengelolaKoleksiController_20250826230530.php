@@ -367,7 +367,7 @@ class AdminPengelolaKoleksiController extends Controller
     public function update(Request $request, $id)
     {
         $collection = Collection::findOrFail($id);
-
+    
         $request->validate([
             'name' => 'required|string|max:255',
             'category_id' => 'required|exists:categories,id',
@@ -387,19 +387,19 @@ class AdminPengelolaKoleksiController extends Controller
             'history_years' => 'nullable|array',
             'history_descriptions' => 'nullable|array',
         ]);
-
+    
         $data = $request->all();
-
+    
         // Handle boolean fields
         $data['is_active'] = $request->has('is_active');
         $data['is_featured'] = $request->has('is_featured');
-
+    
         // Handle image upload
         if ($request->hasFile('image')) {
             // Old image remains in storage (not deleted)
             $data['image_path'] = $this->processImage($request->file('image'), 'collections/images');
         }
-
+    
         // Handle gallery images upload
         if ($request->hasFile('gallery_images')) {
             // Process new gallery images
@@ -413,7 +413,7 @@ class AdminPengelolaKoleksiController extends Controller
                 ]);
             }
         }
-
+    
         // Handle gallery images deletion
         if ($request->has('delete_gallery_images') && is_array($request->delete_gallery_images)) {
             foreach ($request->delete_gallery_images as $galleryId) {
@@ -424,7 +424,7 @@ class AdminPengelolaKoleksiController extends Controller
                 }
             }
         }
-
+    
         if ($collection->update($data)) {
             // Log the update
             Log::info('Collection updated', [
@@ -441,16 +441,16 @@ class AdminPengelolaKoleksiController extends Controller
                 'action' => 'UPDATE',
                 'timestamp' => now()->toDateTimeString()
             ]);
-
+    
             return redirect()->route('collections-management.index')
                 ->with('success', 'Koleksi berhasil diperbarui!');
         }
-
+    
         // Handle timeline sejarah
         if ($request->has('history_titles') && is_array($request->history_titles)) {
             // Delete existing histories
             $collection->histories()->delete();
-
+    
             // Create new histories
             foreach ($request->history_titles as $index => $title) {
                 if (!empty($title)) {
@@ -464,7 +464,7 @@ class AdminPengelolaKoleksiController extends Controller
                 }
             }
         }
-
+    
         return redirect()->route('collections-management.index')->with('success', 'Koleksi berhasil diperbarui');
     }
 
@@ -640,16 +640,11 @@ class AdminPengelolaKoleksiController extends Controller
             abort(404, 'QR Code image tidak ditemukan');
         }
 
-        // Get file extension from the actual file
-        $fileExtension = pathinfo($qrCodeModel->qr_image_path, PATHINFO_EXTENSION);
-        $filename = "QR-{$collection->name}-{$qrCodeModel->qr_code}.{$fileExtension}";
+        $filename = "QR-{$collection->name}-{$qrCodeModel->qr_code}.png";
         $filePath = Storage::disk('public')->path($qrCodeModel->qr_image_path);
 
-        // Set correct content type based on file extension
-        $contentType = $fileExtension === 'svg' ? 'image/svg+xml' : 'image/png';
-
         return response()->download($filePath, $filename, [
-            'Content-Type' => $contentType,
+            'Content-Type' => 'image/png',
             'Content-Disposition' => 'attachment; filename="' . $filename . '"'
         ]);
     }

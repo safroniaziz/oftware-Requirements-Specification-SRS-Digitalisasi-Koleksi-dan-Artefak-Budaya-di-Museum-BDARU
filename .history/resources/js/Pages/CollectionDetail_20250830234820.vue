@@ -1191,18 +1191,18 @@ onMounted(() => {
                         <h3 class="text-2xl font-bold text-gray-900 mb-6">Galeri Detail</h3>
 
                         <!-- Gallery Images -->
-                        <div v-if="collection.gallery_images && Array.isArray(collection.gallery_images) && collection.gallery_images.length > 0">
-                            <h4 class="text-lg font-semibold text-gray-800 mb-4">Galeri Tambahan ({{ collection.gallery_images.length }} gambar)</h4>
+                        <div v-if="collection.galleryImages && Array.isArray(collection.galleryImages) && collection.galleryImages.length > 0">
+                            <h4 class="text-lg font-semibold text-gray-800 mb-4">Galeri Tambahan ({{ collection.galleryImages.length }} gambar)</h4>
                             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                                 <div
-                                    v-for="galleryImage in collection.gallery_images"
+                                    v-for="galleryImage in collection.galleryImages"
                                     :key="galleryImage.id"
                                     class="group relative overflow-hidden rounded-xl bg-gray-100"
                                 >
                                     <img
                                         :src="galleryImage.image_url || galleryImage.image_path"
                                         :alt="galleryImage.caption || collection.name"
-                                        class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
+                                        class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
                                         @error="handleImageError"
                                     >
                                     <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">

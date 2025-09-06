@@ -389,18 +389,11 @@
                                         @enderror
                                     </div>
 
-                                    <!-- Conservation Status -->
+                                    <!-- Conservation Overview -->
                                     <div class="col-md-6">
                                         <label class="form-label">Status Konservasi</label>
-                                        <select name="conservation_status" class="form-input">
-                                            <option value="">Pilih Status Konservasi</option>
-                                            <option value="Sangat Baik" {{ old('conservation_status', $collection->conservation_status) == 'Sangat Baik' ? 'selected' : '' }}>Sangat Baik</option>
-                                            <option value="Baik" {{ old('conservation_status', $collection->conservation_status) == 'Baik' ? 'selected' : '' }}>Baik</option>
-                                            <option value="Cukup" {{ old('conservation_status', $collection->conservation_status) == 'Cukup' ? 'selected' : '' }}>Cukup</option>
-                                            <option value="Perlu Perawatan" {{ old('conservation_status', $collection->conservation_status) == 'Perlu Perawatan' ? 'selected' : '' }}>Perlu Perawatan</option>
-                                            <option value="Rusak" {{ old('conservation_status', $collection->conservation_status) == 'Rusak' ? 'selected' : '' }}>Rusak</option>
-                                        </select>
-                                        @error('conservation_status')
+                                        <textarea name="conservation_overview" class="form-input" rows="4" placeholder="Informasi konservasi...">{{ old('conservation_overview', $collection->conservation_overview) }}</textarea>
+                                        @error('conservation_overview')
                                             <div class="error-text">{{ $message }}</div>
                                         @enderror
                                     </div>

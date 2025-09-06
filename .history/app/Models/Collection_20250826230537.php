@@ -55,7 +55,7 @@ class Collection extends Model
     public function galleryImages(): HasMany
     {
         return $this->hasMany(CollectionGalleryImage::class)
-            ->withoutTrashed()
+            ->whereNull('deleted_at')
             ->orderBy('order');
     }
 

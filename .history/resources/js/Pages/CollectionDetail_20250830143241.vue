@@ -410,6 +410,8 @@ onMounted(() => {
     <!-- Modern Fixed Navigation Bar -->
     <div class="fixed top-0 left-0 right-0 bg-white/98 backdrop-blur-xl border-b border-gray-200/50 shadow-lg z-50">
         <div class="w-full lg:w-4/5 mx-auto px-4 sm:px-6 lg:px-8">
+            </div>
+
             <div class="flex justify-between items-center py-4">
                 <!-- Enhanced Logo Section -->
                 <div class="flex items-center group">
@@ -467,7 +469,6 @@ onMounted(() => {
                             </div>
                         </div>
                     </div>
-                </div>
 
                 <!-- Desktop Auth Buttons -->
                 <div class="hidden lg:flex items-center space-x-4">
@@ -1031,7 +1032,7 @@ onMounted(() => {
 
                     <!-- Technical Specifications & Conservation Info -->
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                        <!-- Technical Specifications -->
+                                                <!-- Technical Specifications -->
                         <div class="bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
                             <h3 class="text-2xl font-bold text-gray-900 mb-6">Spesifikasi Teknis</h3>
                             <div class="space-y-4">
@@ -1103,49 +1104,12 @@ onMounted(() => {
                             </div>
                         </div>
 
-                        <!-- Conservation Status Card -->
-                        <div class="bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
-                            <h3 class="text-2xl font-bold text-gray-900 mb-6">Status Konservasi</h3>
-                            <div class="space-y-4">
-                                <div class="bg-gray-50 rounded-lg p-4 border border-gray-200">
-                                    <div class="flex items-center mb-2">
-                                        <svg class="w-5 h-5 text-green-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                        </svg>
-                                        <span class="text-gray-600 font-medium text-sm">Status</span>
-                                    </div>
-                                    <p class="text-gray-900 font-semibold text-base leading-relaxed">{{ collection.conservation_status || 'Baik' }}</p>
-                                </div>
-
-                                <div class="bg-gray-50 rounded-lg p-4 border border-gray-200">
-                                    <div class="flex items-center mb-2">
-                                        <svg class="w-5 h-5 text-blue-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                                        </svg>
-                                        <span class="text-gray-600 font-medium text-sm">Tahun Konservasi</span>
-                                    </div>
-                                    <p class="text-gray-900 font-semibold text-base leading-relaxed">{{ collection.conservation_year || '-' }}</p>
-                                </div>
-
-                                <div class="bg-gray-50 rounded-lg p-4 border border-gray-200">
-                                    <div class="flex items-center mb-2">
-                                        <svg class="w-5 h-5 text-purple-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
-                                        </svg>
-                                        <span class="text-gray-600 font-medium text-sm">Catatan</span>
-                                    </div>
-                                    <p class="text-gray-900 font-semibold text-base leading-relaxed">{{ collection.conservation_notes || 'Tidak ada catatan khusus' }}</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
                     <!-- History Section -->
                     <!-- Removed Sejarah Koleksi section as requested -->
 
                     <!-- Technical Overview -->
                     <div v-if="collection.technical_overview" class="bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
-                        <h3 class="text-2xl font-bold text-gray-900 mb-6">Overview Spesifikasi Teknis</h3>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-6">Ringkasan Spesifikasi Teknis</h3>
                         <div class="prose prose-lg max-w-none">
                             <div class="bg-gray-50 rounded-xl p-6 border-l-4 border-blue-500">
                                 <p class="text-gray-700 leading-relaxed text-base whitespace-pre-line">{{ collection.technical_overview }}</p>
@@ -1191,18 +1155,18 @@ onMounted(() => {
                         <h3 class="text-2xl font-bold text-gray-900 mb-6">Galeri Detail</h3>
 
                         <!-- Gallery Images -->
-                        <div v-if="collection.gallery_images && Array.isArray(collection.gallery_images) && collection.gallery_images.length > 0">
-                            <h4 class="text-lg font-semibold text-gray-800 mb-4">Galeri Tambahan ({{ collection.gallery_images.length }} gambar)</h4>
+                        <div v-if="collection.galleryImages && collection.galleryImages.length > 0">
+                            <h4 class="text-lg font-semibold text-gray-800 mb-4">Galeri Tambahan ({{ collection.galleryImages.length }} gambar)</h4>
                             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                                 <div
-                                    v-for="galleryImage in collection.gallery_images"
+                                    v-for="galleryImage in collection.galleryImages"
                                     :key="galleryImage.id"
                                     class="group relative overflow-hidden rounded-xl bg-gray-100"
                                 >
                                     <img
-                                        :src="galleryImage.image_url || galleryImage.image_path"
+                                        :src="galleryImage.image_url"
                                         :alt="galleryImage.caption || collection.name"
-                                        class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
+                                        class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
                                         @error="handleImageError"
                                     >
                                     <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
@@ -1227,6 +1191,7 @@ onMounted(() => {
                             <p class="text-sm text-gray-500">Admin akan menambahkan gambar galeri nanti untuk memberikan detail lebih lengkap tentang koleksi ini.</p>
                         </div>
                     </div>
+                </div>
                 </div>
 
                 <!-- QR Code Section -->

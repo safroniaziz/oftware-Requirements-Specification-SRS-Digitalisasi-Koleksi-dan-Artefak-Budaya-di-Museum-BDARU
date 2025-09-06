@@ -467,7 +467,6 @@ onMounted(() => {
                             </div>
                         </div>
                     </div>
-                </div>
 
                 <!-- Desktop Auth Buttons -->
                 <div class="hidden lg:flex items-center space-x-4">
@@ -1031,7 +1030,7 @@ onMounted(() => {
 
                     <!-- Technical Specifications & Conservation Info -->
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                        <!-- Technical Specifications -->
+                                                <!-- Technical Specifications -->
                         <div class="bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
                             <h3 class="text-2xl font-bold text-gray-900 mb-6">Spesifikasi Teknis</h3>
                             <div class="space-y-4">
@@ -1103,49 +1102,36 @@ onMounted(() => {
                             </div>
                         </div>
 
-                        <!-- Conservation Status Card -->
-                        <div class="bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
-                            <h3 class="text-2xl font-bold text-gray-900 mb-6">Status Konservasi</h3>
-                            <div class="space-y-4">
-                                <div class="bg-gray-50 rounded-lg p-4 border border-gray-200">
-                                    <div class="flex items-center mb-2">
-                                        <svg class="w-5 h-5 text-green-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                        </svg>
-                                        <span class="text-gray-600 font-medium text-sm">Status</span>
-                                    </div>
-                                    <p class="text-gray-900 font-semibold text-base leading-relaxed">{{ collection.conservation_status || 'Baik' }}</p>
-                                </div>
-
-                                <div class="bg-gray-50 rounded-lg p-4 border border-gray-200">
-                                    <div class="flex items-center mb-2">
-                                        <svg class="w-5 h-5 text-blue-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                                        </svg>
-                                        <span class="text-gray-600 font-medium text-sm">Tahun Konservasi</span>
-                                    </div>
-                                    <p class="text-gray-900 font-semibold text-base leading-relaxed">{{ collection.conservation_year || '-' }}</p>
-                                </div>
-
-                                <div class="bg-gray-50 rounded-lg p-4 border border-gray-200">
-                                    <div class="flex items-center mb-2">
-                                        <svg class="w-5 h-5 text-purple-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
-                                        </svg>
-                                        <span class="text-gray-600 font-medium text-sm">Catatan</span>
-                                    </div>
-                                    <p class="text-gray-900 font-semibold text-base leading-relaxed">{{ collection.conservation_notes || 'Tidak ada catatan khusus' }}</p>
-                                </div>
+                    <!-- History Section -->
+                    <div class="bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-6">Sejarah Koleksi</h3>
+                        <div class="space-y-6">
+                            <div class="relative pl-8 border-l-4 border-emerald-500">
+                                <div class="absolute left-0 top-0 w-4 h-4 bg-emerald-500 rounded-full transform -translate-x-2"></div>
+                                <h4 class="font-semibold text-gray-900 mb-2">{{ collection.year_period || 'Periode Tradisional' }}</h4>
+                                <p class="text-gray-700">Periode pembuatan koleksi ini, menggambarkan konteks historis dan budaya pada masa tersebut.</p>
+                            </div>
+                            <div class="relative pl-8 border-l-4 border-teal-500">
+                                <div class="absolute left-0 top-0 w-4 h-4 bg-teal-500 rounded-full transform -translate-x-2"></div>
+                                <h4 class="font-semibold text-gray-900 mb-2">Era Tradisional</h4>
+                                <p class="text-gray-700">Dibuat dengan teknik tradisional, menandakan periode keahlian dan tradisi yang berkembang pada masa itu.</p>
+                            </div>
+                            <div class="relative pl-8 border-l-4 border-cyan-500">
+                                <div class="absolute left-0 top-0 w-4 h-4 bg-cyan-500 rounded-full transform -translate-x-2"></div>
+                                <h4 class="font-semibold text-gray-900 mb-2">Lokasi Asal</h4>
+                                <p class="text-gray-700">Berasal dari {{ collection.origin_location || 'Indonesia' }}, menunjukkan pengaruh budaya dan tradisi lokal yang khas.</p>
+                            </div>
+                            <div class="relative pl-8 border-l-4 border-purple-500">
+                                <div class="absolute left-0 top-0 w-4 h-4 bg-purple-500 rounded-full transform -translate-x-2"></div>
+                                <h4 class="font-semibold text-gray-900 mb-2">Era Modern</h4>
+                                <p class="text-gray-700">Koleksi ini telah melalui proses digitalisasi dan konservasi untuk memastikan kelestariannya bagi generasi mendatang.</p>
                             </div>
                         </div>
                     </div>
 
-                    <!-- History Section -->
-                    <!-- Removed Sejarah Koleksi section as requested -->
-
                     <!-- Technical Overview -->
                     <div v-if="collection.technical_overview" class="bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
-                        <h3 class="text-2xl font-bold text-gray-900 mb-6">Overview Spesifikasi Teknis</h3>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-6">Ringkasan Spesifikasi Teknis</h3>
                         <div class="prose prose-lg max-w-none">
                             <div class="bg-gray-50 rounded-xl p-6 border-l-4 border-blue-500">
                                 <p class="text-gray-700 leading-relaxed text-base whitespace-pre-line">{{ collection.technical_overview }}</p>
@@ -1184,25 +1170,60 @@ onMounted(() => {
                         </div>
                     </div>
 
-                    <!-- Cultural Significance Cards - Removed individual cards as requested -->
+                    <!-- Cultural Significance Cards -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="bg-gradient-to-br from-emerald-50 to-teal-50 rounded-2xl p-6 border border-emerald-200">
+                            <div class="w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center mb-4">
+                                <svg class="w-6 h-6 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                                </svg>
+                            </div>
+                            <h4 class="font-semibold text-gray-900 mb-3">Nilai Budaya</h4>
+                            <div class="bg-white/50 rounded-lg p-3 border border-emerald-100">
+                                <p class="text-sm text-gray-700 leading-relaxed whitespace-pre-line">{{ collection.nilai_budaya || 'Mewakili warisan budaya dan tradisi yang berharga' }}</p>
+                            </div>
+                        </div>
+                        <div class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-6 border border-blue-200">
+                            <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-4">
+                                <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                                </svg>
+                            </div>
+                            <h4 class="font-semibold text-gray-900 mb-3">Nilai Historis</h4>
+                            <div class="bg-white/50 rounded-lg p-3 border border-blue-100">
+                                <p class="text-sm text-gray-700 leading-relaxed whitespace-pre-line">{{ collection.nilai_historis || 'Menggambarkan sejarah dan perkembangan budaya' }}</p>
+                            </div>
+                        </div>
+                        <div class="bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl p-6 border border-purple-200">
+                            <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mb-4">
+                                <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                                </svg>
+                            </div>
+                            <h4 class="font-semibold text-gray-900 mb-3">Nilai Edukatif</h4>
+                            <div class="bg-white/50 rounded-lg p-3 border border-purple-100">
+                                <p class="text-sm text-gray-700 leading-relaxed whitespace-pre-line">{{ collection.nilai_edukatif || 'Memberikan pembelajaran tentang teknik dan filosofi budaya tradisional' }}</p>
+                            </div>
+                        </div>
+                    </div>
 
                     <!-- Gallery Section -->
                     <div class="bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
                         <h3 class="text-2xl font-bold text-gray-900 mb-6">Galeri Detail</h3>
 
                         <!-- Gallery Images -->
-                        <div v-if="collection.gallery_images && Array.isArray(collection.gallery_images) && collection.gallery_images.length > 0">
-                            <h4 class="text-lg font-semibold text-gray-800 mb-4">Galeri Tambahan ({{ collection.gallery_images.length }} gambar)</h4>
+                        <div v-if="collection.galleryImages && collection.galleryImages.length > 0">
+                            <h4 class="text-lg font-semibold text-gray-800 mb-4">Galeri Tambahan ({{ collection.galleryImages.length }} gambar)</h4>
                             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                                 <div
-                                    v-for="galleryImage in collection.gallery_images"
+                                    v-for="galleryImage in collection.galleryImages"
                                     :key="galleryImage.id"
                                     class="group relative overflow-hidden rounded-xl bg-gray-100"
                                 >
                                     <img
-                                        :src="galleryImage.image_url || galleryImage.image_path"
+                                        :src="galleryImage.image_url"
                                         :alt="galleryImage.caption || collection.name"
-                                        class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
+                                        class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
                                         @error="handleImageError"
                                     >
                                     <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
@@ -1227,6 +1248,7 @@ onMounted(() => {
                             <p class="text-sm text-gray-500">Admin akan menambahkan gambar galeri nanti untuk memberikan detail lebih lengkap tentang koleksi ini.</p>
                         </div>
                     </div>
+                </div>
                 </div>
 
                 <!-- QR Code Section -->

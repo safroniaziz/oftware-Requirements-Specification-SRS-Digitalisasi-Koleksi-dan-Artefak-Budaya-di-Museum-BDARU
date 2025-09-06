@@ -1,6 +1,6 @@
 @extends('layouts.dashboard.dashboard')
 
-@section('title', 'Edit Koleksi - BDARU Museum')
+@section('title', 'Tambah Koleksi - BDARU Museum')
 
 @section('content')
 <!--begin::Content-->
@@ -14,8 +14,8 @@
                 <!--begin::Card title-->
                 <div class="card-title">
                     <h2 class="fw-bold text-dark">
-                        <i class="fas fa-edit me-3 text-primary"></i>
-                        Edit Koleksi
+                        <i class="fas fa-plus-circle me-3 text-primary"></i>
+                        Tambah Koleksi Baru
                     </h2>
                 </div>
                 <!--begin::Card title-->
@@ -68,9 +68,8 @@
                 </div>
                 <!--end::Wizard Steps-->
 
-                <form action="{{ route('collections-management.update', $collection->id) }}" method="POST" enctype="multipart/form-data" id="collection-form">
+                <form action="{{ route('collections-management.store') }}" method="POST" enctype="multipart/form-data" id="collection-form">
                     @csrf
-                    @method('PUT')
 
                     <!-- Step 1: Informasi Dasar -->
                     <div class="wizard-step active" data-step="1">
@@ -83,7 +82,7 @@
                                         <div class="row g-3">
                                             <div class="col-md-6">
                                                 <label class="form-label required">Nama Koleksi</label>
-                                                <input type="text" name="name" class="form-input" placeholder="Masukkan nama koleksi" value="{{ old('name', $collection->name) }}" required />
+                                                <input type="text" name="name" class="form-input" placeholder="Masukkan nama koleksi" value="{{ old('name') }}" required />
                                                 @error('name')
                                                     <div class="error-text">{{ $message }}</div>
                                                 @enderror
@@ -93,7 +92,7 @@
                                                 <select name="category_id" class="form-input" required>
                                                     <option value="">Pilih kategori</option>
                                                     @foreach($categories as $category)
-                                                        <option value="{{ $category->id }}" {{ old('category_id', $collection->category_id) == $category->id ? 'selected' : '' }}>
+                                                        <option value="{{ $category->id }}" {{ old('category_id') == $category->id ? 'selected' : '' }}>
                                                             {{ $category->name }}
                                                         </option>
                                                     @endforeach
@@ -106,7 +105,7 @@
 
                                         <div class="mt-4">
                                             <label class="form-label required">Deskripsi</label>
-                                            <textarea name="description" class="form-input" rows="4" placeholder="Masukkan deskripsi koleksi" required>{{ old('description', $collection->description) }}</textarea>
+                                            <textarea name="description" class="form-input" rows="4" placeholder="Masukkan deskripsi koleksi" required>{{ old('description') }}</textarea>
                                             @error('description')
                                                 <div class="error-text">{{ $message }}</div>
                                             @enderror
@@ -115,14 +114,14 @@
                                         <div class="row g-3 mt-4">
                                             <div class="col-md-6">
                                                 <label class="form-label">Periode Tahun</label>
-                                                <input type="text" name="year_period" class="form-input" placeholder="Contoh: 1920-1930" value="{{ old('year_period', $collection->year_period) }}" />
+                                                <input type="text" name="year_period" class="form-input" placeholder="Contoh: 1920-1930" value="{{ old('year_period') }}" />
                                                 @error('year_period')
                                                     <div class="error-text">{{ $message }}</div>
                                                 @enderror
                                             </div>
                                             <div class="col-md-6">
                                                 <label class="form-label">Lokasi Asal</label>
-                                                <input type="text" name="origin_location" class="form-input" placeholder="Contoh: Jawa Tengah" value="{{ old('origin_location', $collection->origin_location) }}" />
+                                                <input type="text" name="origin_location" class="form-input" placeholder="Contoh: Jawa Tengah" value="{{ old('origin_location') }}" />
                                                 @error('origin_location')
                                                     <div class="error-text">{{ $message }}</div>
                                                 @enderror
@@ -132,14 +131,14 @@
                                         <div class="row g-3 mt-4">
                                             <div class="col-md-6">
                                                 <label class="form-label">Bahan Material</label>
-                                                <input type="text" name="material" class="form-input" placeholder="Contoh: Kayu, Logam, Kain" value="{{ old('material', $collection->material) }}" />
+                                                <input type="text" name="material" class="form-input" placeholder="Contoh: Kayu, Logam, Kain" value="{{ old('material') }}" />
                                                 @error('material')
                                                     <div class="error-text">{{ $message }}</div>
                                                 @enderror
                                             </div>
                                             <div class="col-md-6">
                                                 <label class="form-label">Ukuran Dimensi</label>
-                                                <input type="text" name="dimensions" class="form-input" placeholder="Contoh: 50cm x 30cm x 20cm" value="{{ old('dimensions', $collection->dimensions) }}" />
+                                                <input type="text" name="dimensions" class="form-input" placeholder="Contoh: 50cm x 30cm x 20cm" value="{{ old('dimensions') }}" />
                                                 @error('dimensions')
                                                     <div class="error-text">{{ $message }}</div>
                                                 @enderror
@@ -155,7 +154,7 @@
                                                 <label class="form-label">Status Koleksi</label>
                                                 <div class="toggle-container">
                                                     <label class="toggle">
-                                                        <input type="checkbox" name="is_active" value="1" {{ old('is_active', $collection->is_active) ? 'checked' : '' }} />
+                                                        <input type="checkbox" name="is_active" value="1" {{ old('is_active', 1) ? 'checked' : '' }} />
                                                         <span class="toggle-slider"></span>
                                                     </label>
                                                     <span class="toggle-label">Aktif</span>
@@ -168,7 +167,7 @@
                                                 <label class="form-label">Koleksi Unggulan</label>
                                                 <div class="toggle-container">
                                                     <label class="toggle">
-                                                        <input type="checkbox" name="is_featured" value="1" {{ old('is_featured', $collection->is_featured) ? 'checked' : '' }} />
+                                                        <input type="checkbox" name="is_featured" value="1" {{ old('is_featured') ? 'checked' : '' }} />
                                                         <span class="toggle-slider"></span>
                                                     </label>
                                                     <span class="toggle-label">Tampilkan di halaman utama</span>
@@ -179,77 +178,13 @@
                                             </div>
                                         </div>
                                     </div>
-
-                                    <!--begin::QR Code Management-->
-                                    <div class="form-section mt-6">
-                                        <h5 class="section-title">QR Code Management</h5>
-
-                                        <div class="mb-4">
-                                            <label class="form-label">Status QR Code</label>
-                                            <div id="qrStatus" class="alert alert-info">
-                                                <i class="fas fa-info-circle me-2"></i>
-                                                <span id="qrStatusText">Memeriksa status QR Code...</span>
-                                            </div>
-                                        </div>
-
-                                        <div class="mb-4">
-                                            <button type="button" class="btn btn-primary w-100 mb-2" id="generateQrBtn" style="display: none;">
-                                                <i class="fas fa-qrcode me-2"></i>
-                                                Generate QR Code
-                                            </button>
-                                            <button type="button" class="btn btn-warning w-100" id="resetQrBtn" style="display: none;">
-                                                <i class="fas fa-sync-alt me-2"></i>
-                                                Reset QR Code
-                                            </button>
-                                        </div>
-
-                                        <div id="qrCodeDisplay" class="d-none">
-                                            <div class="mb-3">
-                                                <label class="form-label">
-                                                    QR Code Terbaru
-                                                    <span class="badge badge-success ms-2">Aktif</span>
-                                                </label>
-                                                <div class="text-center">
-                                                    <img id="qrCodeImage" src="" alt="QR Code" class="img-fluid border rounded" style="max-width: 200px;">
-                                                </div>
-                                            </div>
-                                            <div class="mb-3">
-                                                <label class="form-label">Kode QR</label>
-                                                <div class="input-group">
-                                                    <input type="text" id="qrCodeText" class="form-control" readonly>
-                                                    <button class="btn btn-outline-secondary" type="button" onclick="copyQrCode()">
-                                                        <i class="fas fa-copy"></i>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                            <div class="mb-3">
-                                                <label class="form-label">URL QR Code</label>
-                                                <div class="input-group">
-                                                    <input type="text" id="qrCodeUrl" class="form-control" readonly>
-                                                    <button class="btn btn-outline-secondary" type="button" onclick="copyQrCodeUrl()">
-                                                        <i class="fas fa-copy"></i>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div id="qrCodesList" class="d-none">
-                                            <div class="mb-3">
-                                                <label class="form-label">Semua QR Code</label>
-                                                <div id="qrCodesTable" class="table-responsive">
-                                                    <!-- QR codes will be loaded here -->
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!--end::QR Code Management-->
                                 </div>
 
                                 <div class="col-lg-4">
                                     <div class="form-section">
                                         <h5 class="section-title">Gambar Utama</h5>
 
-                                        <div class="upload-zone" id="upload-zone" style="{{ $collection->image_path ? 'display: none;' : '' }}">
+                                        <div class="upload-zone" id="upload-zone">
                                             <div class="upload-content">
                                                 <i class="fas fa-cloud-upload-alt"></i>
                                                 <h6>Upload Gambar</h6>
@@ -262,23 +197,22 @@
                                         <input type="file" name="image" id="image-input" accept=".png, .jpg, .jpeg, .gif" style="display: none;" />
 
                                         <!-- Preview area di luar dropzone -->
-                                        <div id="image-preview-area" class="mt-3" style="{{ $collection->image_path ? 'display: block;' : 'display: none;' }}">
+                                        <div id="image-preview-area" class="mt-3" style="display: none;">
                                             <div class="image-preview-container w-full rounded-lg overflow-hidden border border-gray-200" style="height: 192px; background-color: #f8f9fa;">
-                                                <img id="preview-image" class="w-full h-full object-contain" alt="Preview" src="{{ $collection->image_path ? asset('storage/' . $collection->image_path) : '' }}">
+                                                <img id="preview-image" class="w-full h-full object-contain" alt="Preview">
                                             </div>
                                             <div class="text-center mt-2">
-                                                <h6 class="text-sm font-semibold text-gray-800 mb-1">{{ $collection->image_path ? 'Gambar Saat Ini' : 'Gambar Terpilih' }}</h6>
-                                                <p id="preview-filename" class="text-xs text-gray-600 mb-2">{{ $collection->image_path ? basename($collection->image_path) : '' }}</p>
+                                                <h6 class="text-sm font-semibold text-gray-800 mb-1">Gambar Terpilih</h6>
+                                                <p id="preview-filename" class="text-xs text-gray-600 mb-2"></p>
                                                 <div class="text-xs text-gray-500 mb-2">
-                                                    <span id="preview-size" class="inline-block bg-blue-100 text-blue-800 px-1 py-0.5 rounded text-xs">{{ $collection->image_path ? 'Gambar tersimpan' : '' }}</span>
-                                                    <span id="preview-dimensions" class="inline-block bg-green-100 text-green-800 px-1 py-0.5 rounded text-xs ml-1">{{ $collection->image_path ? '800×600px' : '' }}</span>
+                                                    <span id="preview-size" class="inline-block bg-blue-100 text-blue-800 px-1 py-0.5 rounded text-xs"></span>
+                                                    <span id="preview-dimensions" class="inline-block bg-green-100 text-green-800 px-1 py-0.5 rounded text-xs ml-1"></span>
                                                 </div>
                                                 <div class="text-xs text-gray-500 mb-2">
                                                     <span class="inline-block bg-yellow-100 text-yellow-800 px-1 py-0.5 rounded text-xs">Akan di-resize ke 800×600px</span>
                                                 </div>
-                                                <button type="button" class="btn-change-image" onclick="changeImage()">
-                                                    <i class="fas fa-edit" style="font-size: 12px;"></i>
-                                                    <span>Ganti Gambar</span>
+                                                <button type="button" class="btn btn-sm btn-outline-primary" onclick="changeImage()">
+                                                    Ganti
                                                 </button>
                                             </div>
                                         </div>
@@ -308,48 +242,22 @@
                                 <div class="upload-zone-large" id="gallery-upload-zone">
                                     <div class="upload-content">
                                         <i class="fas fa-cloud-upload-alt"></i>
-                                        <h6>Tambah Gambar ke Galeri</h6>
-                                        <p>Drag & drop atau klik untuk menambah gambar baru ke galeri</p>
+                                        <h6>Upload Multiple Gambar</h6>
+                                        <p>Drag & drop atau klik untuk memilih beberapa gambar</p>
                                         <button type="button" class="upload-btn" id="gallery-upload-btn">
-                                            Tambah Gambar
+                                            Pilih Gambar
                                         </button>
                                     </div>
                                 </div>
                                 <input type="file" name="gallery_images[]" id="gallery-input" accept=".png, .jpg, .jpeg, .gif" multiple style="display: none;" />
 
-                                <div class="gallery-preview" id="gallery-preview">
-                                    @if($collection->galleryImages && count($collection->galleryImages) > 0)
-                                        @foreach($collection->galleryImages as $index => $galleryImage)
-                                            <div class="gallery-preview-item" data-gallery-id="{{ $galleryImage->id }}">
-                                                <div class="gallery-item-container w-full rounded overflow-hidden border border-gray-200" style="height: 192px; background-color: #f8f9fa;">
-                                                    <img src="{{ $galleryImage->image_url }}" class="w-full h-full object-contain" alt="Gallery Image">
-                                                </div>
-                                                <div class="gallery-item-info mt-2 text-center">
-                                                    <p class="text-xs text-gray-600 truncate">{{ basename($galleryImage->image_path) }}</p>
-                                                    <p class="text-xs text-gray-500">Gambar tersimpan</p>
-                                                    <p class="text-xs text-yellow-600">300×200px</p>
-                                                    <button type="button" class="btn btn-sm btn-outline-danger mt-1" onclick="removeGalleryImage({{ $galleryImage->id }}, this)">
-                                                        <i class="fas fa-trash" style="font-size: 10px;"></i>
-                                                        <span class="ms-1">Hapus</span>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        @endforeach
-                                    @else
-                                        <!-- Debug info -->
-                                        <div class="text-center text-gray-500 py-4">
-                                            <p>Belum ada gambar galeri</p>
-                                            <small>Gallery Images Count: {{ $collection->galleryImages ? count($collection->galleryImages) : 0 }}</small>
-                                        </div>
-                                    @endif
-                                </div>
+                                <div class="gallery-preview" id="gallery-preview"></div>
 
                                 <div class="upload-info">
                                     <small>
                                         <strong>Format:</strong> PNG, JPG, JPEG, GIF. Maksimal 2MB per gambar.<br>
                                         <strong>Ukuran Optimal:</strong> 600×400px (3:2 ratio) atau 450×300px (3:2 ratio)<br>
-                                        <strong>Catatan:</strong> Gambar akan di-resize ke ukuran 300×200px untuk tampilan optimal di galeri.<br>
-                                        <strong>Info:</strong> Anda bisa menambah gambar baru tanpa menghapus gambar yang sudah ada.
+                                        <strong>Catatan:</strong> Gambar akan di-resize ke ukuran 300×200px untuk tampilan optimal di galeri.
                                     </small>
                                 </div>
                                 @error('gallery_images.*')
@@ -362,9 +270,18 @@
 
                                 <div class="mb-4">
                                     <label class="form-label">Nilai Budaya dan Historis</label>
-                                    <textarea name="nilai_budaya" class="form-input" rows="4" placeholder="Jelaskan nilai budaya dan historis koleksi ini...">{{ old('nilai_budaya', $collection->nilai_budaya . ($collection->nilai_budaya && $collection->nilai_historis ? "\n\n" : '') . $collection->nilai_historis) }}</textarea>
+                                    <textarea name="nilai_budaya" class="form-input" rows="4" placeholder="Jelaskan nilai budaya dan historis koleksi ini...">{{ old('nilai_budaya') }}</textarea>
                                     <div class="form-hint">Gabungkan penjelasan tentang nilai budaya dan historis dalam satu deskripsi</div>
                                     @error('nilai_budaya')
+                                        <div class="error-text">{{ $message }}</div>
+                                    @enderror
+                                </div>
+
+                                <div class="mb-4">
+                                    <label class="form-label">Nilai Edukatif</label>
+                                    <textarea name="nilai_edukatif" class="form-input" rows="4" placeholder="Masukkan nilai edukatif koleksi">{{ old('nilai_edukatif') }}</textarea>
+                                    <div class="form-hint">Konten ini akan ditampilkan di bagian "Nilai Edukatif" pada detail koleksi</div>
+                                    @error('nilai_edukatif')
                                         <div class="error-text">{{ $message }}</div>
                                     @enderror
                                 </div>
@@ -377,30 +294,33 @@
                         <div class="step-content">
                             <div class="form-section">
                                 <h5 class="section-title">Spesifikasi Teknis</h5>
-                                <p class="text-gray-600 mb-6">Masukkan detail teknis dan status konservasi koleksi</p>
+                                <p class="text-gray-600 mb-6">Masukkan detail teknis dan nilai budaya koleksi</p>
 
-                                <div class="row g-4">
+                                <div class="row g-3">
                                     <!-- Technical Overview -->
                                     <div class="col-md-6">
-                                        <label class="form-label">Ringkasan Spesifikasi Teknis</label>
-                                        <textarea name="technical_overview" class="form-input" rows="4" placeholder="Deskripsi teknis koleksi...">{{ old('technical_overview', $collection->technical_overview) }}</textarea>
+                                        <label class="form-label">Overview Teknis</label>
+                                        <textarea name="technical_overview" class="form-input" rows="4" placeholder="Deskripsi teknis koleksi...">{{ old('technical_overview') }}</textarea>
                                         @error('technical_overview')
                                             <div class="error-text">{{ $message }}</div>
                                         @enderror
                                     </div>
 
-                                    <!-- Conservation Status -->
+                                    <!-- Conservation Overview -->
                                     <div class="col-md-6">
-                                        <label class="form-label">Status Konservasi</label>
-                                        <select name="conservation_status" class="form-input">
-                                            <option value="">Pilih Status Konservasi</option>
-                                            <option value="Sangat Baik" {{ old('conservation_status', $collection->conservation_status) == 'Sangat Baik' ? 'selected' : '' }}>Sangat Baik</option>
-                                            <option value="Baik" {{ old('conservation_status', $collection->conservation_status) == 'Baik' ? 'selected' : '' }}>Baik</option>
-                                            <option value="Cukup" {{ old('conservation_status', $collection->conservation_status) == 'Cukup' ? 'selected' : '' }}>Cukup</option>
-                                            <option value="Perlu Perawatan" {{ old('conservation_status', $collection->conservation_status) == 'Perlu Perawatan' ? 'selected' : '' }}>Perlu Perawatan</option>
-                                            <option value="Rusak" {{ old('conservation_status', $collection->conservation_status) == 'Rusak' ? 'selected' : '' }}>Rusak</option>
-                                        </select>
-                                        @error('conservation_status')
+                                        <label class="form-label">Overview Konservasi</label>
+                                        <textarea name="conservation_overview" class="form-input" rows="4" placeholder="Informasi konservasi...">{{ old('conservation_overview') }}</textarea>
+                                        @error('conservation_overview')
+                                            <div class="error-text">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+
+                                    <!-- Merged Cultural and Historical Values -->
+                                    <div class="col-12">
+                                        <label class="form-label">Nilai Budaya dan Historis</label>
+                                        <textarea name="nilai_budaya_historis" class="form-input" rows="4" placeholder="Jelaskan nilai budaya dan historis koleksi ini...">{{ old('nilai_budaya_historis') }}</textarea>
+                                        <div class="form-hint">Gabungkan penjelasan tentang nilai budaya dan historis dalam satu deskripsi</div>
+                                        @error('nilai_budaya_historis')
                                             <div class="error-text">{{ $message }}</div>
                                         @enderror
                                     </div>
@@ -1069,40 +989,12 @@ input:checked + .toggle-slider:before {
     background: #157347;
 }
 
- /* Image Preview Styles */
- .image-preview-container {
-     background: #f8f9fa;
-     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-     transition: all 0.3s ease;
- }
-
- /* Custom Button Styles */
- .btn-change-image {
-     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
-     border: none !important;
-     color: white !important;
-     padding: 8px 16px !important;
-     border-radius: 8px !important;
-     font-weight: 500 !important;
-     transition: all 0.3s ease !important;
-     box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
-     display: inline-flex !important;
-     align-items: center !important;
-     gap: 8px !important;
-     text-decoration: none !important;
- }
-
- .btn-change-image:hover {
-     background: linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%) !important;
-     transform: translateY(-2px) !important;
-     box-shadow: 0 4px 12px rgba(0,0,0,0.2) !important;
-     color: white !important;
- }
-
- .btn-change-image:active {
-     transform: translateY(0) !important;
-     box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
- }
+/* Image Preview Styles */
+.image-preview-container {
+    background: #f8f9fa;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
 
 .image-preview-container:hover {
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
@@ -1279,13 +1171,13 @@ function validateCurrentStep() {
     }
 
     if (currentStep === 3) {
-        // Validate technical_overview and conservation_overview (optional but recommended)
+        // Validate technical_overview and conservation_status (optional but recommended)
         const technicalOverview = currentStepElement.querySelector('textarea[name="technical_overview"]');
-        const conservationOverview = currentStepElement.querySelector('textarea[name="conservation_overview"]');
+        const conservationStatus = currentStepElement.querySelector('input[name="conservation_status"]');
 
-        if (!technicalOverview.value.trim() && !conservationOverview.value.trim()) {
+        if (!technicalOverview.value.trim() && !conservationStatus.value.trim()) {
             // Show warning but allow to continue
-            showStepWarning('Overview spesifikasi teknis dan konservasi belum diisi. Disarankan untuk mengisi minimal salah satu field ini.');
+            showStepWarning('Overview spesifikasi teknis dan status konservasi belum diisi. Disarankan untuk mengisi minimal salah satu field ini.');
             return true; // Allow to continue with warning
         }
     }
@@ -1329,24 +1221,14 @@ function showFieldError(field, message) {
 }
 
 function showStepError(message) {
-    Swal.fire({
-        title: 'Error!',
-        text: message,
-        icon: 'error',
-        confirmButtonColor: '#dc3545',
-        confirmButtonText: 'OK'
-    });
+    toastr.error(message, 'Error');
 }
 
 function showStepWarning(message) {
-    Swal.fire({
-        title: 'Warning!',
-        text: message,
-        icon: 'warning',
-        confirmButtonColor: '#ffc107',
-        confirmButtonText: 'OK'
-    });
+    toastr.warning(message, 'Warning');
 }
+
+// Using showToast function from dashboard.js
 
 function prevStep() {
     if (currentStep > 1) {
@@ -1368,46 +1250,22 @@ document.addEventListener('DOMContentLoaded', function() {
     updateWizardSteps();
 
     // Form submit validation
-    const form = document.getElementById('collection-form');
-    if (form) {
-        form.addEventListener('submit', function(e) {
-            if (!validateAllSteps()) {
-                e.preventDefault();
-                showStepError('Mohon lengkapi semua field yang wajib diisi sebelum menyimpan koleksi');
+    document.getElementById('collection-form').addEventListener('submit', function(e) {
+        if (!validateAllSteps()) {
+            e.preventDefault();
+            showStepError('Mohon lengkapi semua field yang wajib diisi sebelum menyimpan koleksi');
 
-                // Go to first step with error
-                currentStep = 1;
-                updateWizardSteps();
-                validateCurrentStep();
-            } else {
-                // Reset alert flag when form is successfully submitted
-                window.alertsShown = false;
-            }
-        });
-    }
+            // Go to first step with error
+            currentStep = 1;
+            updateWizardSteps();
+            validateCurrentStep();
+        }
+    });
 
     // Main image upload
     const uploadZone = document.getElementById('upload-zone');
     const imageInput = document.getElementById('image-input');
     const uploadBtn = document.getElementById('upload-btn');
-
-         // Check if there's an existing image
-     const existingImage = document.getElementById('preview-image');
-     if (existingImage && existingImage.src && !existingImage.src.includes('data:')) {
-         // Hide upload zone if image exists
-         if (uploadZone) {
-             uploadZone.style.display = 'none';
-         }
-     }
-
-     // Check if there are existing gallery images - but keep upload zone visible
-     const galleryPreview = document.getElementById('gallery-preview');
-     const galleryUploadZone = document.getElementById('gallery-upload-zone');
-     if (galleryPreview && galleryUploadZone) {
-         const existingGalleryImages = galleryPreview.querySelectorAll('.gallery-preview-item');
-         // Upload zone tetap tampil untuk menambah gambar baru
-         // Tidak perlu disembunyikan
-     }
 
     console.log('Upload zone element:', uploadZone);
     console.log('Image input element:', imageInput);
@@ -1470,7 +1328,9 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Gallery upload
+    const galleryUploadZone = document.getElementById('gallery-upload-zone');
     const galleryInput = document.getElementById('gallery-input');
+    const galleryPreview = document.getElementById('gallery-preview');
     const galleryUploadBtn = document.getElementById('gallery-upload-btn');
 
     console.log('Gallery upload zone element:', galleryUploadZone);
@@ -1503,14 +1363,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
     galleryInput.addEventListener('change', function(e) {
         const files = Array.from(e.target.files);
-        // Tidak menghapus gallery yang sudah ada, hanya menambah yang baru
+        galleryPreview.innerHTML = '';
 
         files.forEach((file, index) => {
             const reader = new FileReader();
             reader.onload = function(e) {
                 const previewItem = document.createElement('div');
                 previewItem.className = 'gallery-preview-item';
-                previewItem.setAttribute('data-new-image', 'true'); // Tandai sebagai gambar baru
                 previewItem.innerHTML = `
                     <div class="gallery-item-container w-full rounded overflow-hidden border border-gray-200" style="height: 192px; background-color: #f8f9fa;">
                         <img src="${e.target.result}" class="w-full h-full object-contain" alt="Gallery Preview">
@@ -1519,11 +1378,6 @@ document.addEventListener('DOMContentLoaded', function() {
                         <p class="text-xs text-gray-600 truncate">${file.name}</p>
                         <p class="text-xs text-gray-500">${(file.size / 1024 / 1024).toFixed(2)} MB</p>
                         <p class="text-xs text-yellow-600">Akan di-resize ke 300×200px</p>
-                        <p class="text-xs text-blue-600 font-semibold">Gambar Baru</p>
-                        <button type="button" class="btn btn-sm btn-outline-danger mt-1" onclick="removeNewGalleryImage(this)">
-                            <i class="fas fa-trash" style="font-size: 10px;"></i>
-                            <span class="ms-1">Hapus</span>
-                        </button>
                     </div>
                 `;
                 galleryPreview.appendChild(previewItem);
@@ -1533,74 +1387,20 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
- // Function to change image
- function changeImage() {
-     console.log('Change image function called');
-     const imageInput = document.getElementById('image-input');
-     const previewArea = document.getElementById('image-preview-area');
-     const uploadZone = document.getElementById('upload-zone');
+// Function to change image
+function changeImage() {
+    console.log('Change image function called');
+    const imageInput = document.getElementById('image-input');
+    const previewArea = document.getElementById('image-preview-area');
 
-     if (imageInput) {
-         imageInput.click();
-         // Sembunyikan preview dan tampilkan upload zone saat memilih file baru
-         previewArea.style.display = 'none';
-         if (uploadZone) {
-             uploadZone.style.display = 'block';
-         }
-     } else {
-         console.error('Image input not found in changeImage function!');
-     }
- }
-
- // Function to remove existing gallery image
- function removeGalleryImage(galleryId, button) {
-     Swal.fire({
-         title: 'Konfirmasi Hapus',
-         text: 'Apakah Anda yakin ingin menghapus gambar ini dari galeri?',
-         icon: 'warning',
-         showCancelButton: true,
-         confirmButtonColor: '#dc3545',
-         cancelButtonColor: '#6c757d',
-         confirmButtonText: 'Ya, Hapus!',
-         cancelButtonText: 'Batal',
-         reverseButtons: true
-     }).then((result) => {
-         if (result.isConfirmed) {
-             // Remove from DOM
-             const galleryItem = button.closest('.gallery-preview-item');
-             galleryItem.remove();
-
-             // Add hidden input to mark for deletion
-             const form = document.getElementById('collection-form');
-             const deleteInput = document.createElement('input');
-             deleteInput.type = 'hidden';
-             deleteInput.name = 'delete_gallery_images[]';
-             deleteInput.value = galleryId;
-             form.appendChild(deleteInput);
-         }
-     });
- }
-
- // Function to remove new gallery image (not yet saved)
- function removeNewGalleryImage(button) {
-     Swal.fire({
-         title: 'Konfirmasi Hapus',
-         text: 'Apakah Anda yakin ingin menghapus gambar baru ini?',
-         icon: 'warning',
-         showCancelButton: true,
-         confirmButtonColor: '#dc3545',
-         cancelButtonColor: '#6c757d',
-         confirmButtonText: 'Ya, Hapus!',
-         cancelButtonText: 'Batal',
-         reverseButtons: true
-     }).then((result) => {
-         if (result.isConfirmed) {
-             // Remove from DOM
-             const galleryItem = button.closest('.gallery-preview-item');
-             galleryItem.remove();
-         }
-     });
- }
+    if (imageInput) {
+        imageInput.click();
+        // Sembunyikan preview saat memilih file baru
+        previewArea.style.display = 'none';
+    } else {
+        console.error('Image input not found in changeImage function!');
+    }
+}
 
 // Function to confirm submit
 function confirmSubmit() {
@@ -1624,12 +1424,6 @@ function confirmSubmit() {
 
 // Check for success message on page load
 document.addEventListener('DOMContentLoaded', function() {
-    // Flag to prevent multiple alerts
-    if (window.alertsShown) {
-        return;
-    }
-    window.alertsShown = true;
-
     // Check if there's a success message in session
     @if(session('success'))
         Swal.fire({
@@ -1681,255 +1475,21 @@ function validateAllSteps() {
     const category = document.querySelector('select[name="category_id"]');
     const description = document.querySelector('textarea[name="description"]');
 
-    if (name && !name.value.trim()) {
+    if (!name.value.trim()) {
         isValid = false;
     }
 
-    if (category && !category.value) {
+    if (!category.value) {
         isValid = false;
     }
 
-    if (description && !description.value.trim()) {
+    if (!description.value.trim()) {
         isValid = false;
     }
 
 
 
     return isValid;
-}
-
-// QR Code Management Functions
-document.addEventListener('DOMContentLoaded', function() {
-    const collectionId = {{ $collection->id }};
-
-    // Load QR codes on page load
-    loadQrCodes();
-
-    // Generate QR Code button
-    document.getElementById('generateQrBtn').addEventListener('click', function() {
-        generateQrCode();
-    });
-
-    // Reset QR Code button
-    document.getElementById('resetQrBtn').addEventListener('click', function() {
-        resetQrCode();
-    });
-});
-
-function loadQrCodes() {
-    const collectionId = {{ $collection->id }};
-
-    fetch(`/admin/collections/${collectionId}/qr-codes`)
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                updateQrStatus(data.qr_codes);
-            }
-        })
-        .catch(error => {
-            console.error('Error loading QR codes:', error);
-            document.getElementById('qrStatusText').textContent = 'Error loading QR codes';
-        });
-}
-
-function updateQrStatus(qrCodes) {
-    const qrStatus = document.getElementById('qrStatus');
-    const qrStatusText = document.getElementById('qrStatusText');
-    const qrCodeDisplay = document.getElementById('qrCodeDisplay');
-    const qrCodesList = document.getElementById('qrCodesList');
-
-    if (qrCodes.length === 0) {
-        qrStatus.className = 'alert alert-warning';
-        qrStatusText.innerHTML = '<i class="fas fa-exclamation-triangle me-2"></i>Belum ada QR Code. Silakan generate QR Code baru.';
-        document.getElementById('generateQrBtn').style.display = 'inline-flex';
-        document.getElementById('resetQrBtn').style.display = 'none';
-        qrCodeDisplay.classList.add('d-none');
-        qrCodesList.classList.add('d-none');
-    } else {
-        qrStatus.className = 'alert alert-success';
-        qrStatusText.innerHTML = `
-            <i class="fas fa-check-circle me-2"></i>
-            Ada ${qrCodes.length} QR Code aktif.
-            <br><small class="text-muted">QR Code terbaru: <code>${qrCodes[0].qr_code}</code></small>
-        `;
-
-        // Show latest QR code
-        const latestQr = qrCodes[0];
-        document.getElementById('qrCodeImage').src = latestQr.qr_image_url;
-        document.getElementById('qrCodeText').value = latestQr.qr_code;
-        document.getElementById('qrCodeUrl').value = `${window.location.origin}/collections/{{ $collection->slug }}?qr=${latestQr.qr_code}`;
-        qrCodeDisplay.classList.remove('d-none');
-
-        // Show buttons based on QR code status
-        document.getElementById('generateQrBtn').style.display = 'none';
-        document.getElementById('resetQrBtn').style.display = 'inline-flex';
-
-        // Show all QR codes table
-        if (qrCodes.length > 1) {
-            showQrCodesTable(qrCodes);
-            qrCodesList.classList.remove('d-none');
-        } else {
-            qrCodesList.classList.add('d-none');
-        }
-    }
-}
-
-function showQrCodesTable(qrCodes) {
-    const tableContainer = document.getElementById('qrCodesTable');
-
-    let tableHTML = `
-        <div class="alert alert-info mb-3">
-            <i class="fas fa-info-circle me-2"></i>
-            <strong>Info:</strong> QR Code terbaru akan digunakan sebagai default untuk scan.
-        </div>
-        <div class="table-responsive">
-            <table class="table table-sm table-hover">
-                <thead class="table-light">
-                    <tr>
-                        <th>QR Code</th>
-                        <th>Status</th>
-                        <th class="text-center">Scan Count</th>
-                        <th>Last Scanned</th>
-                        <th>Created</th>
-                    </tr>
-                </thead>
-                <tbody>
-    `;
-
-    qrCodes.forEach((qr, index) => {
-        const isLatest = index === 0; // QR code pertama adalah yang terbaru
-        const statusBadge = isLatest ?
-            '<span class="badge badge-success"><i class="fas fa-star me-1"></i>Terbaru</span>' :
-            '<span class="badge badge-secondary"><i class="fas fa-clock me-1"></i>Lama</span>';
-
-        const scanCountClass = qr.scan_count > 0 ? 'text-success' : 'text-muted';
-
-        tableHTML += `
-            <tr class="${isLatest ? 'table-success' : ''}">
-                <td><code class="fs-6">${qr.qr_code}</code></td>
-                <td>${statusBadge}</td>
-                <td class="text-center">
-                    <span class="fw-bold ${scanCountClass}">${qr.scan_count}</span>
-                </td>
-                <td>${qr.last_scanned_at || '<span class="text-muted">-</span>'}</td>
-                <td>${qr.created_at}</td>
-            </tr>
-        `;
-    });
-
-    tableHTML += `
-                </tbody>
-            </table>
-        </div>
-    `;
-
-    tableContainer.innerHTML = tableHTML;
-}
-
-function generateQrCode() {
-    const collectionId = {{ $collection->id }};
-
-    Swal.fire({
-        title: 'Generate QR Code?',
-        text: 'Apakah Anda yakin ingin membuat QR Code baru?',
-        icon: 'question',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Ya, Generate!',
-        cancelButtonText: 'Batal'
-    }).then((result) => {
-        if (result.isConfirmed) {
-            fetch(`/admin/collections/${collectionId}/generate-qr`, {
-                method: 'POST',
-                headers: {
-                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
-                    'Content-Type': 'application/json',
-                }
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    Swal.fire('Berhasil!', data.message, 'success');
-                    loadQrCodes(); // Reload QR codes
-                } else {
-                    Swal.fire('Error!', data.message, 'error');
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                Swal.fire('Error!', 'Terjadi kesalahan saat generate QR Code', 'error');
-            });
-        }
-    });
-}
-
-function resetQrCode() {
-    const collectionId = {{ $collection->id }};
-
-    Swal.fire({
-        title: 'Reset QR Code?',
-        text: 'QR Code baru akan dibuat, tapi QR Code lama tetap bisa digunakan.',
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#ffc107',
-        cancelButtonColor: '#6c757d',
-        confirmButtonText: 'Ya, Reset!',
-        cancelButtonText: 'Batal'
-    }).then((result) => {
-        if (result.isConfirmed) {
-            fetch(`/admin/collections/${collectionId}/reset-qr`, {
-                method: 'POST',
-                headers: {
-                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
-                    'Content-Type': 'application/json',
-                }
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    Swal.fire('Berhasil!', data.message, 'success');
-                    loadQrCodes(); // Reload QR codes
-                } else {
-                    Swal.fire('Error!', data.message, 'error');
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                Swal.fire('Error!', 'Terjadi kesalahan saat reset QR Code', 'error');
-            });
-        }
-    });
-}
-
-function copyQrCode() {
-    const qrCodeText = document.getElementById('qrCodeText');
-    qrCodeText.select();
-    qrCodeText.setSelectionRange(0, 99999);
-    navigator.clipboard.writeText(qrCodeText.value);
-
-    Swal.fire({
-        title: 'Copied!',
-        text: 'QR Code berhasil disalin ke clipboard',
-        icon: 'success',
-        timer: 1500,
-        showConfirmButton: false
-    });
-}
-
-function copyQrCodeUrl() {
-    const qrCodeUrl = document.getElementById('qrCodeUrl');
-    qrCodeUrl.select();
-    qrCodeUrl.setSelectionRange(0, 99999);
-    navigator.clipboard.writeText(qrCodeUrl.value);
-
-    Swal.fire({
-        title: 'Copied!',
-        text: 'URL QR Code berhasil disalin ke clipboard',
-        icon: 'success',
-        timer: 1500,
-        showConfirmButton: false
-    });
 }
 </script>
 @endsection

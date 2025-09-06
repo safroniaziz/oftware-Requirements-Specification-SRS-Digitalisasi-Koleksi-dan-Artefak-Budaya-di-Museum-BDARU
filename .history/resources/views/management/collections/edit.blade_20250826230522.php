@@ -368,6 +368,15 @@
                                         <div class="error-text">{{ $message }}</div>
                                     @enderror
                                 </div>
+
+                                <div class="mb-4">
+                                    <label class="form-label">Nilai Edukatif</label>
+                                    <textarea name="nilai_edukatif" class="form-input" rows="4" placeholder="Masukkan nilai edukatif koleksi">{{ old('nilai_edukatif', $collection->nilai_edukatif) }}</textarea>
+                                    <div class="form-hint">Konten ini akan ditampilkan di bagian "Nilai Edukatif" pada detail koleksi</div>
+                                    @error('nilai_edukatif')
+                                        <div class="error-text">{{ $message }}</div>
+                                    @enderror
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -377,30 +386,33 @@
                         <div class="step-content">
                             <div class="form-section">
                                 <h5 class="section-title">Spesifikasi Teknis</h5>
-                                <p class="text-gray-600 mb-6">Masukkan detail teknis dan status konservasi koleksi</p>
+                                <p class="text-gray-600 mb-6">Masukkan detail teknis dan nilai budaya koleksi</p>
 
                                 <div class="row g-4">
                                     <!-- Technical Overview -->
                                     <div class="col-md-6">
-                                        <label class="form-label">Ringkasan Spesifikasi Teknis</label>
+                                        <label class="form-label">Overview Teknis</label>
                                         <textarea name="technical_overview" class="form-input" rows="4" placeholder="Deskripsi teknis koleksi...">{{ old('technical_overview', $collection->technical_overview) }}</textarea>
                                         @error('technical_overview')
                                             <div class="error-text">{{ $message }}</div>
                                         @enderror
                                     </div>
 
-                                    <!-- Conservation Status -->
+                                    <!-- Conservation Overview -->
                                     <div class="col-md-6">
-                                        <label class="form-label">Status Konservasi</label>
-                                        <select name="conservation_status" class="form-input">
-                                            <option value="">Pilih Status Konservasi</option>
-                                            <option value="Sangat Baik" {{ old('conservation_status', $collection->conservation_status) == 'Sangat Baik' ? 'selected' : '' }}>Sangat Baik</option>
-                                            <option value="Baik" {{ old('conservation_status', $collection->conservation_status) == 'Baik' ? 'selected' : '' }}>Baik</option>
-                                            <option value="Cukup" {{ old('conservation_status', $collection->conservation_status) == 'Cukup' ? 'selected' : '' }}>Cukup</option>
-                                            <option value="Perlu Perawatan" {{ old('conservation_status', $collection->conservation_status) == 'Perlu Perawatan' ? 'selected' : '' }}>Perlu Perawatan</option>
-                                            <option value="Rusak" {{ old('conservation_status', $collection->conservation_status) == 'Rusak' ? 'selected' : '' }}>Rusak</option>
-                                        </select>
-                                        @error('conservation_status')
+                                        <label class="form-label">Overview Konservasi</label>
+                                        <textarea name="conservation_overview" class="form-input" rows="4" placeholder="Informasi konservasi...">{{ old('conservation_overview', $collection->conservation_overview) }}</textarea>
+                                        @error('conservation_overview')
+                                            <div class="error-text">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+
+                                    <!-- Merged Cultural and Historical Values -->
+                                    <div class="col-12">
+                                        <label class="form-label">Nilai Budaya dan Historis</label>
+                                        <textarea name="nilai_budaya_historis" class="form-input" rows="4" placeholder="Jelaskan nilai budaya dan historis koleksi ini...">{{ old('nilai_budaya_historis', $collection->nilai_budaya . ($collection->nilai_budaya && $collection->nilai_historis ? "\n\n" : '') . $collection->nilai_historis) }}</textarea>
+                                        <div class="form-hint">Gabungkan penjelasan tentang nilai budaya dan historis dalam satu deskripsi</div>
+                                        @error('nilai_budaya_historis')
                                             <div class="error-text">{{ $message }}</div>
                                         @enderror
                                     </div>

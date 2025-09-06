@@ -181,7 +181,7 @@
                                         </div>
                                         <div class="d-flex justify-content-start flex-column">
                                             <div class="d-flex align-items-center mb-1">
-                                                <a href="/collections/{{ $collection->slug }}"
+                                                <a href="/collections/{{ $collection->id }}"
                                                    target="_blank"
                                                    class="text-dark fw-bold text-hover-primary fs-6 me-2">
                                                     {{ $collection->name }}

@@ -380,8 +380,9 @@ class AdminPengelolaKoleksiController extends Controller
             'dimensions' => 'nullable|string|max:255',
             'conservation_status' => 'nullable|string|max:255',
             'technical_overview' => 'nullable|string',
-            'conservation_overview' => 'nullable|string',
-            'nilai_budaya_historis' => 'nullable|string',
+            'nilai_budaya' => 'nullable|string',
+            'nilai_historis' => 'nullable|string',
+            'nilai_edukatif' => 'nullable|string',
             'rating' => 'nullable|numeric|min:0|max:5',
             'history_titles' => 'nullable|array',
             'history_years' => 'nullable|array',
@@ -640,16 +641,11 @@ class AdminPengelolaKoleksiController extends Controller
             abort(404, 'QR Code image tidak ditemukan');
         }
 
-        // Get file extension from the actual file
-        $fileExtension = pathinfo($qrCodeModel->qr_image_path, PATHINFO_EXTENSION);
-        $filename = "QR-{$collection->name}-{$qrCodeModel->qr_code}.{$fileExtension}";
+        $filename = "QR-{$collection->name}-{$qrCodeModel->qr_code}.png";
         $filePath = Storage::disk('public')->path($qrCodeModel->qr_image_path);
 
-        // Set correct content type based on file extension
-        $contentType = $fileExtension === 'svg' ? 'image/svg+xml' : 'image/png';
-
         return response()->download($filePath, $filename, [
-            'Content-Type' => $contentType,
+            'Content-Type' => 'image/png',
             'Content-Disposition' => 'attachment; filename="' . $filename . '"'
         ]);
     }
